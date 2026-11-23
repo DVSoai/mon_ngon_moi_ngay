@@ -17,14 +17,24 @@ JSON_PATH = BASE / "mon-ngon-supabase-data.json"
 
 # (bảng trong JSON/DB, thứ tự nạp theo khóa ngoại)
 TABLES = [
+    "regions",
+    "cooking_methods",
+    "meals",
+    "time_bands",
+    "occasions",
+    "dish_types",
     "sources",
     "dishes",
+    "dish_cooking_methods",
+    "dish_meals",
+    "dish_occasions",
     "recipes",
     "ingredients",
     "nutrition_estimates",
     "diet_modes",
-    "dish_diet_tags",
+    "dish_vegetarian",
     "weekly_menu",
+    "weekly_menu_items",
 ]
 
 CSV_FILES = {
@@ -40,6 +50,8 @@ def sql_literal(v):
         return "true" if v else "false"
     if isinstance(v, (int, float)):
         return repr(v)
+    if isinstance(v, list):
+        return "array[" + ", ".join(sql_literal(x) for x in v) + "]::text[]"
     return "'" + str(v).replace("'", "''") + "'"
 
 
