@@ -1,91 +1,91 @@
-id,slug,name,region,cooking_method,meal,time_band,occasion,has_full_recipe,status
-3a854ee6-9fae-5871-8ee0-9e666de75b0d,pho-bo,Phở bò,Bac,mon_nuoc,sang,tren_60,,true,co_cong_thuc
-78302447-7078-5814-80fc-5154f324349e,pho-ga,Phở gà,Bac,mon_nuoc,sang,,,false,dang_bien_tap
-faa77d86-0b21-50ca-8414-f204602a8b32,bun-cha,Bún chả,Bac,nuong,toi,30_60,,true,co_cong_thuc
-f5c5fee1-e9e6-5a5a-9e12-ea6d2daaa016,bun-thang,Bún thang,Bac,mon_nuoc,sang,,,false,dang_bien_tap
-5f8d8159-d075-5f8e-a1b3-6cb029f1007c,bun-dau-mam-tom,Bún đậu mắm tôm,Bac,,,,,false,dang_bien_tap
-bc63b8e5-6940-570b-aa4c-17ec19e6d1e5,cha-ca-la-vong,Chả cá Lã Vọng,Bac,,,,,false,dang_bien_tap
-e482daca-369d-5d8a-be01-6b73c0a1bb26,banh-cuon-thanh-tri,Bánh cuốn Thanh Trì,Bac,,sang,,,false,dang_bien_tap
-06615ea3-5aec-51ad-b882-8818266c111a,banh-da-cua-hai-phong,Bánh đa cua Hải Phòng,Bac,,,,,false,dang_bien_tap
-2c5d7046-a8c5-555a-96cd-5756f0d8cbe7,ga-luoc-la-chanh,Gà luộc lá chanh,Bac,hap_luoc,,,,false,dang_bien_tap
-3cae751f-5e9a-5b8b-93cf-40d5ab69fbdc,thit-dong,Thịt đông,Bac,,,,,false,dang_bien_tap
-9f06a700-bf0a-5cf1-a2f9-a0f691c539c9,canh-cua-rau-day,Canh cua rau đay,Bac,canh,trua,,,false,dang_bien_tap
-3d0310c3-3b30-5c87-9b05-67d010c8ab13,rau-muong-xao-toi,Rau muống xào tỏi,Bac,xao,,,,false,dang_bien_tap
-ae636ce8-02f1-5b56-85b4-a6d1a4656b5a,nem-ran,Nem rán,Bac,chien_ran,,,,false,dang_bien_tap
-e28b4a58-0379-5343-a4e2-23f5cfd150d9,cha-com,Chả cốm,Bac,,,,,false,dang_bien_tap
-5a6ab92d-046f-519e-a326-7ca56df8b043,xoi-xeo,Xôi xéo,Bac,,sang,,,false,dang_bien_tap
-dc46721b-f3f1-5f32-b7f9-fe14729d44c1,ca-kho-lang-vu-dai,Cá kho làng Vũ Đại,Bac,kho,,,,false,dang_bien_tap
-0fd2ea69-a65e-516f-9a6d-535d705ab17e,bun-oc,Bún ốc,Bac,mon_nuoc,,,,false,dang_bien_tap
-2f41e428-fbf1-5543-a724-a3b0848917b9,mien-ga,Miến gà,Bac,mon_nuoc,,,,false,dang_bien_tap
-f85a4c23-6e7f-5536-ac01-e91d199104cb,canh-rieu-cua,Canh riêu cua,Bac,canh,,,,false,dang_bien_tap
-0ea3b941-67a6-505d-b561-3541fd688d32,thit-quay-gion-bi,Thịt quay giòn bì,Bac,,trua,,,false,dang_bien_tap
-0c195890-6f59-5519-bfa4-b0c648537aca,dau-phu-sot-ca-chua,Đậu phụ sốt cà chua,Bac,,toi,,,false,dang_bien_tap
-13c04914-a073-5206-9bdf-96fe6147ac6f,trung-duc-thit,Trứng đúc thịt,Bac,,toi,,,false,dang_bien_tap
-aefa64d8-47d4-50d4-9bb8-ac872e8f997a,canh-bi-nau-tom,Canh bí nấu tôm,Bac,canh,toi,,,false,dang_bien_tap
-d61a369b-03c5-513e-990e-33cf66b34639,su-hao-xao,Su hào xào,Bac,xao,,,,false,dang_bien_tap
-b679c289-9c24-5422-a48f-a5090ca4682f,nom-hoa-chuoi,Nộm hoa chuối,Bac,goi_cuon,,,,false,dang_bien_tap
-6b465b8e-c832-5d21-ac99-e0011b007d53,che-dau-xanh,Chè đậu xanh,Bac,,an_nhe,,,false,dang_bien_tap
-d299cabc-82dd-577d-82d2-41d9a02d8d6d,banh-troi-tau,Bánh trôi tàu,Bac,,an_nhe,,,false,dang_bien_tap
-09cf159e-9133-5a2a-921c-94c8662df640,pho-cuon,Phở cuốn,Bac,goi_cuon,,,,false,dang_bien_tap
-1e5d58f6-be02-54b7-8947-351c689fa7bc,bun-moc,Bún mọc,Bac,mon_nuoc,,,,false,dang_bien_tap
-61c78e60-aa66-5bf1-9e6b-6b9d16df7303,chao-suon,Cháo sườn,Bac,,,,,false,dang_bien_tap
-e3d7de0c-d541-5277-aa22-2d5a52442ec4,bun-bo-hue,Bún bò Huế,Trung,mon_nuoc,trua,tren_60,,true,co_cong_thuc
-b6fcb00f-4477-5f6e-9905-a5626a60d501,mi-quang-ga-tom-thit,Mì Quảng gà/tôm thịt,Trung,,toi,30_60,,true,co_cong_thuc
-768bce1d-00bc-5810-9747-769988181992,cao-lau-hoi-an,Cao lầu Hội An,Trung,,trua,,,false,dang_bien_tap
-ab939e45-3c43-5e4d-be81-83cffea90813,banh-beo-chen,Bánh bèo chén,Trung,,,,,false,dang_bien_tap
-add1f8eb-c943-59ef-8408-fcbcb4fd0ee2,banh-nam,Bánh nậm,Trung,,,,,false,dang_bien_tap
-b0b9e8f5-d9b6-5178-ada1-048929f2c694,banh-bot-loc-tran,Bánh bột lọc trần,Trung,,,,,false,dang_bien_tap
-702dd979-8368-593b-b43d-0d39be9a52b7,banh-uot-thit-nuong,Bánh ướt thịt nướng,Trung,nuong,,,,false,dang_bien_tap
-d8993dbd-0282-520e-ae31-dab2f5a290f9,com-hen,Cơm hến,Trung,,,,,false,dang_bien_tap
-bb557903-b7ad-5c8b-80ec-3b59b1632010,bun-hen,Bún hến,Trung,mon_nuoc,,,,false,dang_bien_tap
-3e63d50c-2399-52fa-9346-67373f28c391,banh-xeo-mien-trung,Bánh xèo miền Trung,Trung,,,,,false,dang_bien_tap
-6230e722-ec0d-5d25-b720-2986c9d2f519,banh-can,Bánh căn,Trung,,,,,false,dang_bien_tap
-0d8dc264-5496-58b6-bf3b-deaf2cf4c9ca,banh-hoi-long-heo,Bánh hỏi lòng heo,Trung,,,,,false,dang_bien_tap
-2ca1fe37-506b-5dd9-a63f-bdb5d34dc448,cha-ca-quy-nhon,Chả cá Quy Nhơn,Trung,,,,,false,dang_bien_tap
-bff40585-0ceb-5593-9968-e8c5bcf872b0,bun-cha-ca,Bún chả cá,Trung,mon_nuoc,,,,false,dang_bien_tap
-1c360273-a482-527c-a21c-b92b08e9875a,goi-ca-mai,Gỏi cá mai,Trung,goi_cuon,,,,false,dang_bien_tap
-a2ae7e4b-87ca-5e03-8048-c020dcc9a34a,ca-nuc-kho,Cá nục kho,Trung,kho,,,,false,dang_bien_tap
-2ed7da05-8a2f-5d24-bbbd-299d95e7caf6,thit-heo-luoc-cuon-banh-trang,Thịt heo luộc cuốn bánh tráng,Trung,,,,,false,dang_bien_tap
-c622ff22-375e-5d0a-9892-a7f40b492050,mit-tron,Mít trộn,Trung,goi_cuon,,,,false,dang_bien_tap
-89ee2379-728c-5f07-8a11-71d7e617b487,canh-chua-ca-dia,Canh chua cá dìa,Trung,canh,,,,false,dang_bien_tap
-ea6385b5-1e6c-5e45-9e11-6423916127be,oc-hut,Ốc hút,Trung,,,,,false,dang_bien_tap
-3ba2d14d-1b49-52b2-8f05-a8eaca08f5f5,che-dau-van,Chè đậu ván,Trung,,an_nhe,,,false,dang_bien_tap
-0bfda6d4-69d4-5fe0-97c3-384ef42b5a3a,banh-it-la-gai,Bánh ít lá gai,Trung,,,,,false,dang_bien_tap
-3bb02a21-f6e7-5774-8b49-96d4e051c099,nem-lui-hue,Nem lụi Huế,Trung,,,,,false,dang_bien_tap
-5dcd2798-5b09-55df-9dfb-94524ab5113e,bun-thit-nuong,Bún thịt nướng,Trung,nuong,,,,false,dang_bien_tap
-e395fbbc-bf70-536e-b1eb-a9785fd09900,com-ga-tam-ky,Cơm gà Tam Kỳ,Trung,,trua,,,false,dang_bien_tap
-493bcb11-4e96-534c-bcbe-f00a34075ee3,ga-chi-xoi-mo,Gà chỉ xối mỡ,Trung,chien_ran,,,,false,dang_bien_tap
-65bd60a4-6d66-5eb3-9d7e-c3e56bccdaf8,banh-dap,Bánh đập,Trung,,,,,false,dang_bien_tap
-54b1d514-7d97-5184-857e-76e01c1183ba,mat-ca-ngu-dai-duong,Mắt cá ngừ đại dương,Trung,,,,,false,dang_bien_tap
-56e6ea72-b45d-5d94-8786-7253668d0a08,tre-binh-dinh,Tré Bình Định,Trung,,,,,false,dang_bien_tap
-f89b5910-aa78-5f96-a2ea-621c6d104acf,chao-long,Cháo lòng,Trung,,,,,false,dang_bien_tap
-2d478aac-e3e0-5202-a892-cee66eaaa8ca,hu-tieu-nam-vang,Hủ tiếu Nam Vang,Nam,mon_nuoc,sang,tren_60,,true,co_cong_thuc
-14b3e421-0db5-5ad4-b332-9f68b51f38cd,hu-tieu-my-tho,Hủ tiếu Mỹ Tho,Nam,mon_nuoc,,,,false,dang_bien_tap
-21d9b04e-493a-54a1-bd40-c42814b69c7a,com-tam-suon-bi-cha,Cơm tấm sườn bì chả,Nam,nuong,trua,tren_60,,true,co_cong_thuc
-4b444db5-79c4-5583-967b-6f102aa3dfff,banh-xeo-nam-bo,Bánh xèo Nam Bộ,Nam,,,,,false,dang_bien_tap
-594beb18-269d-5ec2-8844-ff7b6b795561,lau-mam,Lẩu mắm,Nam,lau,toi,,cuoi_tuan_dai_khach,false,dang_bien_tap
-be1397fb-256b-5f3a-87ce-0a86a2e3745e,ca-kho-to,Cá kho tộ,Nam,kho,trua,,,false,dang_bien_tap
-ea21db2e-6540-5312-a4b1-24346995b417,canh-chua-ca-loc,Canh chua cá lóc,Nam,canh,,,,false,dang_bien_tap
-cd6f5e55-a73f-540c-8173-1a07ba3731aa,thit-kho-tau,Thịt kho tàu,Nam,kho,,,,false,dang_bien_tap
-ca78dcfa-66a5-530b-8de6-4adf62896c96,bo-luc-lac,Bò lúc lắc,Nam,,trua,,,false,dang_bien_tap
-b900cc28-dc8d-5b15-acae-e5f87effe628,goi-cuon,Gỏi cuốn,Nam,goi_cuon,toi,,,false,dang_bien_tap
-cee04690-4d0f-5c5c-b450-8e7bc817bafc,banh-trang-tron,Bánh tráng trộn,Nam,goi_cuon,,,,false,dang_bien_tap
-71d636bf-59c6-53ca-ba75-90d7791c99f7,oc-len-xao-dua,Ốc len xào dừa,Nam,xao,,,,false,dang_bien_tap
-7486d647-d16c-55d8-9dc9-7e61eff05a9f,chao-ca-loc-rau-dang,Cháo cá lóc rau đắng,Nam,,,,,false,dang_bien_tap
-24e1de9d-2d57-51c0-a87c-666b89deb861,bun-mam,Bún mắm,Nam,mon_nuoc,,,,false,dang_bien_tap
-1db2eeed-7621-53bc-9236-e78b26982508,bun-nuoc-leo-soc-trang,Bún nước lèo Sóc Trăng,Nam,mon_nuoc,,,,false,dang_bien_tap
-09823a69-cd5d-59f3-9e9f-52abd14a7564,vit-nau-chao,Vịt nấu chao,Nam,,,,,false,dang_bien_tap
-5f7ddb14-d25e-5db7-adce-241af0c10430,ga-xoi-mo-com-chien,Gà xối mỡ cơm chiên,Nam,chien_ran,,,,false,dang_bien_tap
-5b9f0df5-c3e0-58a2-be25-9073ae39ecde,kho-qua-nhoi-thit,Khổ qua nhồi thịt,Nam,,,,,false,dang_bien_tap
-971b0663-8add-53bf-9f72-7af8831a84fb,rau-luoc-kho-quet,Rau luộc kho quẹt,Nam,,,,,false,dang_bien_tap
-d07905f2-f8a0-5d99-828b-4ddde630d420,ca-ro-kho,Cá rô kho,Nam,kho,,,,false,dang_bien_tap
-49e70caa-6f23-5a3d-968c-9318dbbfdf7b,tom-rim,Tôm rim,Nam,,,,,false,dang_bien_tap
-c39590ed-dc20-514d-a1e9-65378c7715a1,muc-xao-chua-ngot,Mực xào chua ngọt,Nam,xao,,,,false,dang_bien_tap
-aead26c4-258d-5455-bcbd-58d31452262f,lau-ga-la-e,Lẩu gà lá é,Nam,lau,,,,false,dang_bien_tap
-35a2787e-94c0-549c-b22e-062d9794b897,che-ba-mau,Chè ba màu,Nam,,an_nhe,,,false,dang_bien_tap
-008ba2dd-515d-5aa6-9bd1-351ac9b76aab,banh-da-lon,Bánh da lợn,Nam,,an_nhe,,,false,dang_bien_tap
-cb9362eb-fe2e-5d4d-b5d2-35cb46ed60df,dua-sap,Dừa sáp,Nam,,an_nhe,,,false,dang_bien_tap
-a06ab99b-0a68-56a7-a21c-415e1ee45c3b,sup-cua,Súp cua,Nam,,,,,false,dang_bien_tap
-f4b85408-7a03-5a6f-806d-1885ebd17bac,mi-xao-gion,Mì xào giòn,Nam,xao,,,,false,dang_bien_tap
-fea75c03-70b2-5e2b-9eba-4bf1ccb8f306,hoanh-thanh,Hoành thánh,Nam,,,,,false,dang_bien_tap
-a9e6f96e-55da-5cfe-8160-945d2e1b6237,chao-goi-vit,Cháo gỏi vịt,Nam,,,,,false,dang_bien_tap
+id,slug,name,region,dish_type,locality,difficulty,image_url,description,has_full_recipe,status,is_published
+3a854ee6-9fae-5871-8ee0-9e666de75b0d,pho-bo,Phở bò,Bac,,,,,,true,co_cong_thuc,true
+78302447-7078-5814-80fc-5154f324349e,pho-ga,Phở gà,Bac,,,,,,false,dang_bien_tap,true
+faa77d86-0b21-50ca-8414-f204602a8b32,bun-cha,Bún chả,Bac,,,,,,true,co_cong_thuc,true
+f5c5fee1-e9e6-5a5a-9e12-ea6d2daaa016,bun-thang,Bún thang,Bac,,,,,,false,dang_bien_tap,true
+5f8d8159-d075-5f8e-a1b3-6cb029f1007c,bun-dau-mam-tom,Bún đậu mắm tôm,Bac,,,,,,false,dang_bien_tap,true
+bc63b8e5-6940-570b-aa4c-17ec19e6d1e5,cha-ca-la-vong,Chả cá Lã Vọng,Bac,,,,,,false,dang_bien_tap,true
+e482daca-369d-5d8a-be01-6b73c0a1bb26,banh-cuon-thanh-tri,Bánh cuốn Thanh Trì,Bac,,,,,,false,dang_bien_tap,true
+06615ea3-5aec-51ad-b882-8818266c111a,banh-da-cua-hai-phong,Bánh đa cua Hải Phòng,Bac,,,,,,false,dang_bien_tap,true
+2c5d7046-a8c5-555a-96cd-5756f0d8cbe7,ga-luoc-la-chanh,Gà luộc lá chanh,Bac,,,,,,false,dang_bien_tap,true
+3cae751f-5e9a-5b8b-93cf-40d5ab69fbdc,thit-dong,Thịt đông,Bac,,,,,,false,dang_bien_tap,true
+9f06a700-bf0a-5cf1-a2f9-a0f691c539c9,canh-cua-rau-day,Canh cua rau đay,Bac,,,,,,false,dang_bien_tap,true
+3d0310c3-3b30-5c87-9b05-67d010c8ab13,rau-muong-xao-toi,Rau muống xào tỏi,Bac,,,,,,false,dang_bien_tap,true
+ae636ce8-02f1-5b56-85b4-a6d1a4656b5a,nem-ran,Nem rán,Bac,,,,,,false,dang_bien_tap,true
+e28b4a58-0379-5343-a4e2-23f5cfd150d9,cha-com,Chả cốm,Bac,,,,,,false,dang_bien_tap,true
+5a6ab92d-046f-519e-a326-7ca56df8b043,xoi-xeo,Xôi xéo,Bac,,,,,,false,dang_bien_tap,true
+dc46721b-f3f1-5f32-b7f9-fe14729d44c1,ca-kho-lang-vu-dai,Cá kho làng Vũ Đại,Bac,,,,,,false,dang_bien_tap,true
+0fd2ea69-a65e-516f-9a6d-535d705ab17e,bun-oc,Bún ốc,Bac,,,,,,false,dang_bien_tap,true
+2f41e428-fbf1-5543-a724-a3b0848917b9,mien-ga,Miến gà,Bac,,,,,,false,dang_bien_tap,true
+f85a4c23-6e7f-5536-ac01-e91d199104cb,canh-rieu-cua,Canh riêu cua,Bac,,,,,,false,dang_bien_tap,true
+0ea3b941-67a6-505d-b561-3541fd688d32,thit-quay-gion-bi,Thịt quay giòn bì,Bac,,,,,,false,dang_bien_tap,true
+0c195890-6f59-5519-bfa4-b0c648537aca,dau-phu-sot-ca-chua,Đậu phụ sốt cà chua,Bac,,,,,,false,dang_bien_tap,true
+13c04914-a073-5206-9bdf-96fe6147ac6f,trung-duc-thit,Trứng đúc thịt,Bac,,,,,,false,dang_bien_tap,true
+aefa64d8-47d4-50d4-9bb8-ac872e8f997a,canh-bi-nau-tom,Canh bí nấu tôm,Bac,,,,,,false,dang_bien_tap,true
+d61a369b-03c5-513e-990e-33cf66b34639,su-hao-xao,Su hào xào,Bac,,,,,,false,dang_bien_tap,true
+b679c289-9c24-5422-a48f-a5090ca4682f,nom-hoa-chuoi,Nộm hoa chuối,Bac,,,,,,false,dang_bien_tap,true
+6b465b8e-c832-5d21-ac99-e0011b007d53,che-dau-xanh,Chè đậu xanh,Bac,,,,,,false,dang_bien_tap,true
+d299cabc-82dd-577d-82d2-41d9a02d8d6d,banh-troi-tau,Bánh trôi tàu,Bac,,,,,,false,dang_bien_tap,true
+09cf159e-9133-5a2a-921c-94c8662df640,pho-cuon,Phở cuốn,Bac,,,,,,false,dang_bien_tap,true
+1e5d58f6-be02-54b7-8947-351c689fa7bc,bun-moc,Bún mọc,Bac,,,,,,false,dang_bien_tap,true
+61c78e60-aa66-5bf1-9e6b-6b9d16df7303,chao-suon,Cháo sườn,Bac,,,,,,false,dang_bien_tap,true
+e3d7de0c-d541-5277-aa22-2d5a52442ec4,bun-bo-hue,Bún bò Huế,Trung,,,,,,true,co_cong_thuc,true
+b6fcb00f-4477-5f6e-9905-a5626a60d501,mi-quang-ga-tom-thit,Mì Quảng gà/tôm thịt,Trung,,,,,,true,co_cong_thuc,true
+768bce1d-00bc-5810-9747-769988181992,cao-lau-hoi-an,Cao lầu Hội An,Trung,,,,,,false,dang_bien_tap,true
+ab939e45-3c43-5e4d-be81-83cffea90813,banh-beo-chen,Bánh bèo chén,Trung,,,,,,false,dang_bien_tap,true
+add1f8eb-c943-59ef-8408-fcbcb4fd0ee2,banh-nam,Bánh nậm,Trung,,,,,,false,dang_bien_tap,true
+b0b9e8f5-d9b6-5178-ada1-048929f2c694,banh-bot-loc-tran,Bánh bột lọc trần,Trung,,,,,,false,dang_bien_tap,true
+702dd979-8368-593b-b43d-0d39be9a52b7,banh-uot-thit-nuong,Bánh ướt thịt nướng,Trung,,,,,,false,dang_bien_tap,true
+d8993dbd-0282-520e-ae31-dab2f5a290f9,com-hen,Cơm hến,Trung,,,,,,false,dang_bien_tap,true
+bb557903-b7ad-5c8b-80ec-3b59b1632010,bun-hen,Bún hến,Trung,,,,,,false,dang_bien_tap,true
+3e63d50c-2399-52fa-9346-67373f28c391,banh-xeo-mien-trung,Bánh xèo miền Trung,Trung,,,,,,false,dang_bien_tap,true
+6230e722-ec0d-5d25-b720-2986c9d2f519,banh-can,Bánh căn,Trung,,,,,,false,dang_bien_tap,true
+0d8dc264-5496-58b6-bf3b-deaf2cf4c9ca,banh-hoi-long-heo,Bánh hỏi lòng heo,Trung,,,,,,false,dang_bien_tap,true
+2ca1fe37-506b-5dd9-a63f-bdb5d34dc448,cha-ca-quy-nhon,Chả cá Quy Nhơn,Trung,,,,,,false,dang_bien_tap,true
+bff40585-0ceb-5593-9968-e8c5bcf872b0,bun-cha-ca,Bún chả cá,Trung,,,,,,false,dang_bien_tap,true
+1c360273-a482-527c-a21c-b92b08e9875a,goi-ca-mai,Gỏi cá mai,Trung,,,,,,false,dang_bien_tap,true
+a2ae7e4b-87ca-5e03-8048-c020dcc9a34a,ca-nuc-kho,Cá nục kho,Trung,,,,,,false,dang_bien_tap,true
+2ed7da05-8a2f-5d24-bbbd-299d95e7caf6,thit-heo-luoc-cuon-banh-trang,Thịt heo luộc cuốn bánh tráng,Trung,,,,,,false,dang_bien_tap,true
+c622ff22-375e-5d0a-9892-a7f40b492050,mit-tron,Mít trộn,Trung,,,,,,false,dang_bien_tap,true
+89ee2379-728c-5f07-8a11-71d7e617b487,canh-chua-ca-dia,Canh chua cá dìa,Trung,,,,,,false,dang_bien_tap,true
+ea6385b5-1e6c-5e45-9e11-6423916127be,oc-hut,Ốc hút,Trung,,,,,,false,dang_bien_tap,true
+3ba2d14d-1b49-52b2-8f05-a8eaca08f5f5,che-dau-van,Chè đậu ván,Trung,,,,,,false,dang_bien_tap,true
+0bfda6d4-69d4-5fe0-97c3-384ef42b5a3a,banh-it-la-gai,Bánh ít lá gai,Trung,,,,,,false,dang_bien_tap,true
+3bb02a21-f6e7-5774-8b49-96d4e051c099,nem-lui-hue,Nem lụi Huế,Trung,,,,,,false,dang_bien_tap,true
+5dcd2798-5b09-55df-9dfb-94524ab5113e,bun-thit-nuong,Bún thịt nướng,Trung,,,,,,false,dang_bien_tap,true
+e395fbbc-bf70-536e-b1eb-a9785fd09900,com-ga-tam-ky,Cơm gà Tam Kỳ,Trung,,,,,,false,dang_bien_tap,true
+493bcb11-4e96-534c-bcbe-f00a34075ee3,ga-chi-xoi-mo,Gà chỉ xối mỡ,Trung,,,,,,false,dang_bien_tap,true
+65bd60a4-6d66-5eb3-9d7e-c3e56bccdaf8,banh-dap,Bánh đập,Trung,,,,,,false,dang_bien_tap,true
+54b1d514-7d97-5184-857e-76e01c1183ba,mat-ca-ngu-dai-duong,Mắt cá ngừ đại dương,Trung,,,,,,false,dang_bien_tap,true
+56e6ea72-b45d-5d94-8786-7253668d0a08,tre-binh-dinh,Tré Bình Định,Trung,,,,,,false,dang_bien_tap,true
+f89b5910-aa78-5f96-a2ea-621c6d104acf,chao-long,Cháo lòng,Trung,,,,,,false,dang_bien_tap,true
+2d478aac-e3e0-5202-a892-cee66eaaa8ca,hu-tieu-nam-vang,Hủ tiếu Nam Vang,Nam,,,,,,true,co_cong_thuc,true
+14b3e421-0db5-5ad4-b332-9f68b51f38cd,hu-tieu-my-tho,Hủ tiếu Mỹ Tho,Nam,,,,,,false,dang_bien_tap,true
+21d9b04e-493a-54a1-bd40-c42814b69c7a,com-tam-suon-bi-cha,Cơm tấm sườn bì chả,Nam,,,,,,true,co_cong_thuc,true
+4b444db5-79c4-5583-967b-6f102aa3dfff,banh-xeo-nam-bo,Bánh xèo Nam Bộ,Nam,,,,,,false,dang_bien_tap,true
+594beb18-269d-5ec2-8844-ff7b6b795561,lau-mam,Lẩu mắm,Nam,,,,,,false,dang_bien_tap,true
+be1397fb-256b-5f3a-87ce-0a86a2e3745e,ca-kho-to,Cá kho tộ,Nam,,,,,,false,dang_bien_tap,true
+ea21db2e-6540-5312-a4b1-24346995b417,canh-chua-ca-loc,Canh chua cá lóc,Nam,,,,,,false,dang_bien_tap,true
+cd6f5e55-a73f-540c-8173-1a07ba3731aa,thit-kho-tau,Thịt kho tàu,Nam,,,,,,false,dang_bien_tap,true
+ca78dcfa-66a5-530b-8de6-4adf62896c96,bo-luc-lac,Bò lúc lắc,Nam,,,,,,false,dang_bien_tap,true
+b900cc28-dc8d-5b15-acae-e5f87effe628,goi-cuon,Gỏi cuốn,Nam,,,,,,false,dang_bien_tap,true
+cee04690-4d0f-5c5c-b450-8e7bc817bafc,banh-trang-tron,Bánh tráng trộn,Nam,,,,,,false,dang_bien_tap,true
+71d636bf-59c6-53ca-ba75-90d7791c99f7,oc-len-xao-dua,Ốc len xào dừa,Nam,,,,,,false,dang_bien_tap,true
+7486d647-d16c-55d8-9dc9-7e61eff05a9f,chao-ca-loc-rau-dang,Cháo cá lóc rau đắng,Nam,,,,,,false,dang_bien_tap,true
+24e1de9d-2d57-51c0-a87c-666b89deb861,bun-mam,Bún mắm,Nam,,,,,,false,dang_bien_tap,true
+1db2eeed-7621-53bc-9236-e78b26982508,bun-nuoc-leo-soc-trang,Bún nước lèo Sóc Trăng,Nam,,,,,,false,dang_bien_tap,true
+09823a69-cd5d-59f3-9e9f-52abd14a7564,vit-nau-chao,Vịt nấu chao,Nam,,,,,,false,dang_bien_tap,true
+5f7ddb14-d25e-5db7-adce-241af0c10430,ga-xoi-mo-com-chien,Gà xối mỡ cơm chiên,Nam,,,,,,false,dang_bien_tap,true
+5b9f0df5-c3e0-58a2-be25-9073ae39ecde,kho-qua-nhoi-thit,Khổ qua nhồi thịt,Nam,,,,,,false,dang_bien_tap,true
+971b0663-8add-53bf-9f72-7af8831a84fb,rau-luoc-kho-quet,Rau luộc kho quẹt,Nam,,,,,,false,dang_bien_tap,true
+d07905f2-f8a0-5d99-828b-4ddde630d420,ca-ro-kho,Cá rô kho,Nam,,,,,,false,dang_bien_tap,true
+49e70caa-6f23-5a3d-968c-9318dbbfdf7b,tom-rim,Tôm rim,Nam,,,,,,false,dang_bien_tap,true
+c39590ed-dc20-514d-a1e9-65378c7715a1,muc-xao-chua-ngot,Mực xào chua ngọt,Nam,,,,,,false,dang_bien_tap,true
+aead26c4-258d-5455-bcbd-58d31452262f,lau-ga-la-e,Lẩu gà lá é,Nam,,,,,,false,dang_bien_tap,true
+35a2787e-94c0-549c-b22e-062d9794b897,che-ba-mau,Chè ba màu,Nam,,,,,,false,dang_bien_tap,true
+008ba2dd-515d-5aa6-9bd1-351ac9b76aab,banh-da-lon,Bánh da lợn,Nam,,,,,,false,dang_bien_tap,true
+cb9362eb-fe2e-5d4d-b5d2-35cb46ed60df,dua-sap,Dừa sáp,Nam,,,,,,false,dang_bien_tap,true
+a06ab99b-0a68-56a7-a21c-415e1ee45c3b,sup-cua,Súp cua,Nam,,,,,,false,dang_bien_tap,true
+f4b85408-7a03-5a6f-806d-1885ebd17bac,mi-xao-gion,Mì xào giòn,Nam,,,,,,false,dang_bien_tap,true
+fea75c03-70b2-5e2b-9eba-4bf1ccb8f306,hoanh-thanh,Hoành thánh,Nam,,,,,,false,dang_bien_tap,true
+a9e6f96e-55da-5cfe-8160-945d2e1b6237,chao-goi-vit,Cháo gỏi vịt,Nam,,,,,,false,dang_bien_tap,true
