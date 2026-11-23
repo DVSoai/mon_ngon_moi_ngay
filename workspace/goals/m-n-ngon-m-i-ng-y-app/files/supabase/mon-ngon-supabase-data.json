@@ -182,6 +182,36 @@
       "name": "Bộ Y tế — 10 Khuyến nghị dinh dưỡng hợp lý đến năm 2030",
       "note": "Hạn chế đồ chiên rán/đồ ăn nhanh, thực phẩm nhiều mỡ/mặn/ngọt. Chỉ dùng cho quy tắc chế độ ăn.",
       "url": null
+    },
+    {
+      "code": "hellobacsi",
+      "name": "Hello Bacsi",
+      "note": "Trang sức khỏe Hello Bacsi; bài có tác giả và bác sĩ tham vấn. Chỉ tham khảo, chưa nấu thử.",
+      "url": "https://hellobacsi.com"
+    },
+    {
+      "code": "vietcetera",
+      "name": "Vietcetera",
+      "note": "Tạp chí số Vietcetera; bài có ghi tác giả. Chỉ tham khảo, chưa nấu thử.",
+      "url": "https://vietcetera.com"
+    },
+    {
+      "code": "vietnamnet",
+      "name": "VietNamNet",
+      "note": "Báo điện tử VietNamNet. Chỉ tham khảo, chưa nấu thử.",
+      "url": "https://vietnamnet.vn"
+    },
+    {
+      "code": "vnexpress",
+      "name": "VnExpress — mục Ẩm thực/Cooking",
+      "note": "Báo điện tử VnExpress; công thức có ghi tên tác giả. Chỉ tham khảo, chưa nấu thử.",
+      "url": "https://vnexpress.net"
+    },
+    {
+      "code": "vtcnews",
+      "name": "VTC News",
+      "note": "Báo điện tử VTC News. Chỉ tham khảo, chưa nấu thử.",
+      "url": "https://vtcnews.vn"
     }
   ],
   "dishes": [
@@ -209,8 +239,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -237,8 +267,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -251,8 +281,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -265,8 +295,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -293,8 +323,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -307,8 +337,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -321,8 +351,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -335,8 +365,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -349,8 +379,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -363,8 +393,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -377,8 +407,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -391,8 +421,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -419,8 +449,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -433,8 +463,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -461,8 +491,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -489,8 +519,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -587,8 +617,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -601,8 +631,8 @@
       "difficulty": null,
       "image_url": null,
       "description": null,
-      "has_full_recipe": false,
-      "status": "dang_bien_tap",
+      "has_full_recipe": true,
+      "status": "tham_khao_online",
       "is_published": true
     },
     {
@@ -1642,6 +1672,42 @@
     {
       "dish_id": "21d9b04e-493a-54a1-bd40-c42814b69c7a",
       "cooking_method_code": "hap_luoc"
+    },
+    {
+      "dish_id": "5f8d8159-d075-5f8e-a1b3-6cb029f1007c",
+      "cooking_method_code": "chien_ran"
+    },
+    {
+      "dish_id": "5f8d8159-d075-5f8e-a1b3-6cb029f1007c",
+      "cooking_method_code": "hap_luoc"
+    },
+    {
+      "dish_id": "bc63b8e5-6940-570b-aa4c-17ec19e6d1e5",
+      "cooking_method_code": "nuong"
+    },
+    {
+      "dish_id": "06615ea3-5aec-51ad-b882-8818266c111a",
+      "cooking_method_code": "mon_nuoc"
+    },
+    {
+      "dish_id": "e28b4a58-0379-5343-a4e2-23f5cfd150d9",
+      "cooking_method_code": "hap_luoc"
+    },
+    {
+      "dish_id": "e28b4a58-0379-5343-a4e2-23f5cfd150d9",
+      "cooking_method_code": "chien_ran"
+    },
+    {
+      "dish_id": "5a6ab92d-046f-519e-a326-7ca56df8b043",
+      "cooking_method_code": "hap_luoc"
+    },
+    {
+      "dish_id": "0ea3b941-67a6-505d-b561-3541fd688d32",
+      "cooking_method_code": "nuong"
+    },
+    {
+      "dish_id": "13c04914-a073-5206-9bdf-96fe6147ac6f",
+      "cooking_method_code": "chien_ran"
     }
   ],
   "dish_meals": [
@@ -1874,6 +1940,348 @@
       "source_url": null,
       "source_accessed_date": null,
       "recipe_status": null
+    },
+    {
+      "id": "19071b2d-c768-5b04-90ff-5f4eb8a218a3",
+      "dish_id": "78302447-7078-5814-80fc-5154f324349e",
+      "dish_name": "Phở gà",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": "6–8 người",
+      "servings": null,
+      "time_text": "120 phút",
+      "total_minutes": 120,
+      "ingredients_text": "1 con gà mái (2 kg); 2 bộ xương gà; sá sùng (nấu nước dùng); hành khô, hành tây, gừng, rễ mùi, rễ hành lá, hạt mùi; mắm ngon, muối, đường phèn; hành lá, rau mùi, lá chanh; bánh phở tươi; giấm tỏi, chanh, ớt",
+      "steps_text": "Công thức tham khảo từ VnExpress — Bùi Thủy, «Cách làm phở gà Hà Nội truyền thống» (18/8/2023), chưa nấu thử.\n1) Làm sạch gà; chần qua bộ xương cho hết bọt bẩn rồi rửa lại. 2) Nướng thơm hành khô, hành tây, gừng; rang hạt mùi, cho vào túi lọc gia vị. 3) Thả gà vào nồi nước, đun sôi chừng 5 phút rồi tắt lửa, đậy kín ủ 25–30 phút cho chín đều; vớt ra ngâm nước đá để da săn. 4) Lấy nước luộc gà làm nền, ninh cùng xương, sá sùng và túi gia vị lửa nhỏ, vớt bọt thường xuyên. 5) Nêm mắm, muối, chút đường phèn; thái gà thành miếng. 6) Trần bánh phở, xếp gà, rắc hành lá, rau mùi, lá chanh thái chỉ, chan nước dùng nóng; ăn kèm chanh, ớt, giấm tỏi.",
+      "tip": null,
+      "source_code": "vnexpress",
+      "recipe_source": "VnExpress — Bùi Thủy, «Cách làm phở gà Hà Nội truyền thống» (18/8/2023)",
+      "source_url": "https://vnexpress.net/pho-ga-ha-noi-truyen-thong-4643362.html",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "6b40c559-45a4-531a-b06a-a99e6247f5c6",
+      "dish_id": "f5c5fee1-e9e6-5a5a-9e12-ea6d2daaa016",
+      "dish_name": "Bún thang",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": "4–5 người",
+      "servings": null,
+      "time_text": null,
+      "total_minutes": null,
+      "ingredients_text": "Gà ta 1 con (1,2–1,3 kg); Trứng gà 2 quả; Giò lụa 100 gram; Xương hom lợn 500 gram; Tôm khô 50 gram; Sá sùng 2–3 con hoặc 2–3 cái râu mực khô; Bún tươi 1,5 kg; Nấm hương 20 gram; Củ cải sợi khô 50 gram; Hành tây 1 củ vừa; Hành khô 6 củ; Rau răm, gừng, hành lá, chanh, ớt; Gia vị: mắm tôm, nước mắm, bột ngọt, dầu ăn, hạt nêm, muối, giấm, đường trắng, tinh dầu cà cuống (nếu có)",
+      "steps_text": "Công thức tham khảo từ VnExpress — độc giả Phùng Thơm, «Bún thang chuẩn vị Hà Nội» (27/8/2021), chưa nấu thử.\n1) Luộc gà cùng hành khô và gừng nướng ở lửa nhỏ khoảng 15 phút, để nguội rồi xé hoặc thái mỏng; giữ xương. 2) Ninh xương hom với xương gà, sá sùng (hoặc râu mực), tôm khô, nấm hương và hành tây 1–2 giờ, hớt bọt cho nước trong. 3) Rang tôm khô giã tơi thành ruốc; tráng trứng thật mỏng rồi thái sợi; thái sợi giò lụa. 4) Ngâm củ cải khô, rửa sạch, trộn với giấm đường làm dưa chua ăn kèm. 5) Nêm nước dùng vừa ăn; trần bún, xếp gà, trứng, giò, ruốc tôm, rau răm, hành lá lên trên rồi chan nước dùng; nhỏ chút cà cuống và mắm tôm tùy thích.",
+      "tip": null,
+      "source_code": "vnexpress",
+      "recipe_source": "VnExpress — độc giả Phùng Thơm, «Bún thang chuẩn vị Hà Nội» (27/8/2021)",
+      "source_url": "https://vnexpress.net/bun-thang-chuan-vi-ha-noi-4346677.html",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "eb6a8670-4f23-513c-9edf-760c9d929473",
+      "dish_id": "5f8d8159-d075-5f8e-a1b3-6cb029f1007c",
+      "dish_name": "Bún đậu mắm tôm",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": null,
+      "servings": null,
+      "time_text": null,
+      "total_minutes": null,
+      "ingredients_text": "Đậu phụ chiên 10 miếng; Thịt ba chỉ 500gr; Chả cốm 300gr; Bún tươi 1kg; Mắm tôm 1/2 bát; Ớt băm 1 muỗng cà phê; Nước cốt chanh 1 muỗng canh; Đường trắng 1 muỗng canh; Bột ngọt 1 muỗng cà phê; Dầu ăn 6 muỗng canh; Tía tô 100gr, rau thơm các loại 50gr; Dưa chuột 3 quả",
+      "steps_text": "Công thức tham khảo từ VietNamNet — «Cách làm bún đậu mắm tôm ngon như của bà Nội phim Gạo nếp gạo tẻ» (19/9/2018), chưa nấu thử.\n1) Rán đậu phụ ngập dầu cho vàng giòn, để ráo. 2) Luộc thịt ba chỉ trong khoảng 1 lít nước đến chín, vớt ra để nguội rồi thái lát mỏng. 3) Rán chả cốm vàng hai mặt, cắt miếng. 4) Nhặt, rửa rau thơm và ngâm khoảng 30 phút; dưa chuột thái lát. 5) Đánh mắm tôm với đường, nước cốt chanh, bột ngọt, ớt và một ít dầu nóng vừa rán cho dậy mùi. 6) Cắt bún thành miếng, bày cùng đậu, thịt, chả, rau và bát mắm tôm.",
+      "tip": null,
+      "source_code": "vietnamnet",
+      "recipe_source": "VietNamNet — «Cách làm bún đậu mắm tôm ngon như của bà Nội phim Gạo nếp gạo tẻ» (19/9/2018)",
+      "source_url": "https://vietnamnet.vn/cach-lam-bun-dau-mam-tom-ngon-nhu-cua-ba-noi-phim-gao-nep-gao-te-477450.html",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "dbc97abb-f306-56ea-a6a4-de58c91f396c",
+      "dish_id": "bc63b8e5-6940-570b-aa4c-17ec19e6d1e5",
+      "dish_name": "Chả cá Lã Vọng",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": "4–6 người",
+      "servings": null,
+      "time_text": "90 phút",
+      "total_minutes": 90,
+      "ingredients_text": "1 kg cá lăng phi lê; 1 củ riềng bánh tẻ; 1 củ nghệ tươi; mẻ (cơm mẻ); nước mắm ngon, mắm tôm, mì chính, hạt tiêu, tinh dầu cà cuống; thì là, hành hoa, húng Láng, rau mùi; lạc rang, hành phi, chanh, ớt, hành tây (tùy chọn); mỡ lợn hoặc mỡ gà ta; bún",
+      "steps_text": "Công thức tham khảo từ VnExpress — Bùi Thủy, «Cách làm chả cá Hà Nội hương vị xưa» (23/2/2023), chưa nấu thử.\n1) Cắt cá thành miếng vừa, thấm khô; giã riềng, nghệ lấy nước cốt, trộn cùng mẻ và gia vị rồi ướp cá ít nhất 2 giờ. 2) Nướng cá trên than hoa (hoặc nồi chiên không dầu, lò nướng) đến khi chín và se mặt. 3) Đánh mắm tôm với chanh, đường, chút cà cuống và ớt làm nước chấm. 4) Khi ăn, làm nóng chảo với mỡ, cho cá vào cùng thì là và hành hoa, đảo nhanh đến khi rau vừa chín. 5) Ăn nóng với bún, rau thơm, lạc rang, hành phi và mắm tôm.",
+      "tip": null,
+      "source_code": "vnexpress",
+      "recipe_source": "VnExpress — Bùi Thủy, «Cách làm chả cá Hà Nội hương vị xưa» (23/2/2023)",
+      "source_url": "https://vnexpress.net/cha-ca-ha-noi-huong-vi-xua-4574099.html",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "dish_id": "06615ea3-5aec-51ad-b882-8818266c111a",
+      "dish_name": "Bánh đa cua Hải Phòng",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": null,
+      "servings": null,
+      "time_text": null,
+      "total_minutes": null,
+      "ingredients_text": "Cua đồng tự xay hoặc cua xay sẵn đóng gói: 500g; Gạch cua: 20g; Bắp: 1 trái; Hành tây: 1/2 củ; Bắp cải hoặc củ cải đường: 1 nửa; Cà chua: 2 trái; Nước cốt me: 15g; Mắm tôm: 15g; Tôm khô: 5g; Hành tím; Hành lá; Rau mùi; Chả cá; Chả lá lốt; Tôm; Chả giò (tùy sở thích); Bánh đa đỏ; Rau giá; Rau muống; Bột canh, nước mắm, đường, tiêu",
+      "steps_text": "Công thức tham khảo từ Vietcetera — Windy, «Ra lò: Ở nhà nấu bánh đa cua như một người Hải Phòng chính hiệu» (06/04/2020), chưa nấu thử.\n1) Đun khoảng 3 lít nước với bắp, bắp cải và hành tây làm nước dùng rau, để nguội. 2) Làm sạch cua, bỏ yếm, giữ gạch; xay thân cua, hòa với nước dùng nguội, lọc lấy nước và bỏ bã. 3) Đun nước cua lửa nhỏ, khuấy nhẹ và nêm bột canh; khi riêu nổi thì vớt riêng để không vỡ. 4) Phi hành tím, xào cà chua cùng gạch cua, nêm vừa rồi cho vào nồi; thêm nước cốt me, mắm tôm, tôm khô và đun sôi lại. 5) Chuẩn bị chả cá, chả lá lốt, tôm (tự làm hoặc mua sẵn). 6) Ngâm bánh đa đỏ nước lạnh khoảng 5 phút, rửa, để ráo, trần nước sôi trước khi ăn; xếp bánh, rau, riêu, chả, tôm vào bát, chan nước dùng, rắc hành và rau mùi.",
+      "tip": null,
+      "source_code": "vietcetera",
+      "recipe_source": "Vietcetera — Windy, «Ra lò: Ở nhà nấu bánh đa cua như một người Hải Phòng chính hiệu» (06/04/2020)",
+      "source_url": "https://vietcetera.com/ra-lo-o-nha-nau-banh-da-cua-nhu-mot-nguoi-hai-phong-chinh-hieu/",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "a4b37191-3902-5152-9918-4e9861b0ed18",
+      "dish_id": "2c5d7046-a8c5-555a-96cd-5756f0d8cbe7",
+      "dish_name": "Gà luộc lá chanh",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": null,
+      "servings": null,
+      "time_text": "Luộc 40–50 phút cho một con gà",
+      "total_minutes": null,
+      "ingredients_text": "Gà nguyên con (nên chọn gà ta); 1 củ gừng; Hành củ; Hành lá; Muối (nửa thìa cà phê khi nấu nước luộc); Lá chanh (thái nhỏ rắc lên khi bày, tùy chọn); Tùy chọn: tiêu, mỡ gà, nghệ (quét da)",
+      "steps_text": "Công thức tham khảo từ Hello Bacsi — Ngọc Anh, tham vấn y khoa BS Nguyễn Thường Hanh, «Hướng dẫn bạn cách luộc gà ngon nhất» (cập nhật 07/11/2021), chưa nấu thử.\n1) Xát muối, rửa sạch gà cả trong lẫn ngoài, để ráo. 2) Buộc gọn hành lá; nướng gừng và hành củ, bóc vỏ, đập dập. 3) Đặt gà úp bụng vào nồi nước lạnh ngập gà, thêm gừng, hành, chút muối. 4) Đun sôi khoảng 5 phút, hạ nhỏ lửa thêm khoảng 5 phút, rồi tắt bếp đậy nắp ủ khoảng 20 phút. 5) Xiên thử phần đùi: đũa xuyên dễ, nước không còn hồng là chín; vớt gà nhúng nước lạnh cho da giòn. 6) Để nguội rồi chặt, xếp đĩa, rắc lá chanh thái chỉ.",
+      "tip": null,
+      "source_code": "hellobacsi",
+      "recipe_source": "Hello Bacsi — Ngọc Anh, tham vấn y khoa BS Nguyễn Thường Hanh, «Hướng dẫn bạn cách luộc gà ngon nhất» (cập nhật 07/11/2021)",
+      "source_url": "https://hellobacsi.com/an-uong-lanh-manh/cong-thuc-nau-an-tot-cho-suc-khoe/huong-dan-ban-cach-luoc-ga-ngon-nhat/",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "9d72e04b-a53e-56ff-86c4-bc025dd16894",
+      "dish_id": "3cae751f-5e9a-5b8b-93cf-40d5ab69fbdc",
+      "dish_name": "Thịt đông",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": null,
+      "servings": null,
+      "time_text": null,
+      "total_minutes": null,
+      "ingredients_text": "Thịt chân giò: 500gr; Da lợn: 100gr; Nấm hương: 10-15 tai; Mộc nhĩ: 20gr; Hành tím: 2 củ; Gia vị: Nước mắm, tiêu xay, tiêu vỡ, bột canh; Tùy chọn: thịt gà, thịt ngan, thịt ba chỉ, lưỡi lợn, tai lợn, mũi lợn",
+      "steps_text": "Công thức tham khảo từ VTC News — Nhật Thùy, «Cách nấu thịt đông chuẩn ngon» (14/12/2024), chưa nấu thử.\n1) Cạo sạch lông, rửa thịt và da với muối, cắt miếng, chần sôi rồi rửa lại. 2) Ngâm nấm hương, mộc nhĩ cho nở, cắt chân, thái nhỏ; băm hành tím. 3) Phi hành, cho thịt và da vào đảo cùng gia vị, đổ nước ngập rồi nấu nhỏ lửa khoảng 1 giờ, hớt bọt để nước trong. 4) Khi thịt mềm, xào sơ nấm và mộc nhĩ rồi cho vào nồi đun thêm khoảng 10 phút. 5) Rắc tiêu dưới đáy bát, xếp thịt vào, múc nước trong đổ lên, để nguội cho đông (mùa nóng để ngăn mát 3–4 giờ).",
+      "tip": null,
+      "source_code": "vtcnews",
+      "recipe_source": "VTC News — Nhật Thùy, «Cách nấu thịt đông chuẩn ngon» (14/12/2024)",
+      "source_url": "https://vtcnews.vn/cach-nau-thit-dong-chuan-ngon-ar913239.html",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "c313f2c4-b8c9-54ab-bee0-45eabd864ab0",
+      "dish_id": "9f06a700-bf0a-5cf1-a2f9-a0f691c539c9",
+      "dish_name": "Canh cua rau đay",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": "4–5 người",
+      "servings": null,
+      "time_text": "40 phút",
+      "total_minutes": 40,
+      "ingredients_text": "200 gr cua đồng; 1 bó rau đay; 1 bó mồng tơi; 1-2 quả mướp hương; Gia vị: Muối, hạt nêm (hoặc mì chính)",
+      "steps_text": "Công thức tham khảo từ VnExpress — Bùi Thủy, «Cách nấu canh cua đóng tảng, không bị tanh trong ngày hè nóng bức» (13/5/2022), chưa nấu thử.\n1) Rửa cua với muối hạt, bỏ yếm, khêu gạch để riêng; giã nhuyễn thân cua với chút muối. 2) Thêm nước vào cua giã, bóp kỹ rồi lọc vài lần để lấy hết thịt cua. 3) Nhặt lá non rau đay, mồng tơi, thái nhỏ; gọt mướp, thái lát mỏng. 4) Đun nước cua lửa vừa, khuấy một chiều để không bén đáy; khi riêu nổi thì hạ lửa, gạt riêu sang một bên. 5) Cho rau và mướp vào nấu chín, nêm vừa; thêm gạch cua vào nồi. 6) Múc ra bát, xếp riêu cua lên trên.",
+      "tip": null,
+      "source_code": "vnexpress",
+      "recipe_source": "VnExpress — Bùi Thủy, «Cách nấu canh cua đóng tảng, không bị tanh trong ngày hè nóng bức» (13/5/2022)",
+      "source_url": "https://vnexpress.net/doi-song-cooking-canh-cua-4462675.html",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "003910fc-c488-57ba-8886-49f54a1d260e",
+      "dish_id": "3d0310c3-3b30-5c87-9b05-67d010c8ab13",
+      "dish_name": "Rau muống xào tỏi",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": "4–6 người",
+      "servings": null,
+      "time_text": "20 phút",
+      "total_minutes": 20,
+      "ingredients_text": "1 bó rau muống; 1 củ tỏi lớn; Gia vị: Muối, mắm tôm, hạt nêm; Mỡ lợn hoặc dầu ăn; Nước đá; Rau ngổ, kinh giới ăn kèm (tùy chọn)",
+      "steps_text": "Công thức tham khảo từ VnExpress — Bùi Thủy, «Cách xào rau muống tỏi xanh giòn dậy mùi thơm» (29/3/2022), chưa nấu thử.\n1) Bỏ lá úa và cọng già, ngâm rau trong nước muối loãng rồi rửa sạch. 2) Băm nhỏ một nửa củ tỏi, phần còn lại để nguyên tép và đập dập. 3) Trụng rau vài giây trong nồi nước sôi có muối ở lửa to, vớt ngay sang nước đá cho rau giữ màu và độ giòn. 4) Phi thơm tỏi băm với mỡ hoặc dầu, cho rau vào đảo nhanh trên lửa lớn, nêm mắm tôm, hạt nêm, thêm tỏi đập dập (và rau ngổ nếu dùng), tắt bếp, ăn nóng.",
+      "tip": null,
+      "source_code": "vnexpress",
+      "recipe_source": "VnExpress — Bùi Thủy, «Cách xào rau muống tỏi xanh giòn dậy mùi thơm» (29/3/2022)",
+      "source_url": "https://vnexpress.net/cach-xao-rau-muong-xanh-gion-4444514.html",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "dish_id": "ae636ce8-02f1-5b56-85b4-a6d1a4656b5a",
+      "dish_name": "Nem rán",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": "4–6 người",
+      "servings": null,
+      "time_text": "75 phút",
+      "total_minutes": 75,
+      "ingredients_text": "600 gr thịt nạc vai xay; 200 gr tôm nõn; 5 gr mộc nhĩ khô; 3 gr nấm hương khô; 1 nắm miến; 1 củ đậu (hoặc giá đỗ, tùy chọn); 1 củ hành tây; 1/2 củ su hào; 1/2 củ cà rốt; 1 nắm hành hoa; 1 bó rau mùi ta; 1 - 2 quả trứng; 2 - 3 củ hành khô; Gia vị: mắm, muối, hạt nêm, hạt tiêu; Bánh đa nem để gói; Bia để phết bánh đa nem cho giòn; Dầu ăn",
+      "steps_text": "Công thức tham khảo từ VnExpress — Bùi Thủy, «Công thức và Cách làm nem rán Hà Nội chuẩn nhất» (25/1/2022), chưa nấu thử.\n1) Ngâm nở nấm, mộc nhĩ rồi thái nhỏ; thái sợi rau củ, cắt ngắn miến, thái hạt lựu tôm; để mọi thứ thật ráo. 2) Ướp thịt với chút dầu và gia vị, trộn rau củ vào; chỉ cho trứng lúc sắp gói để nhân không ra nước. 3) Phết bia cho bánh đa nem mềm, có thể lót hai lớp, cho nhân và tôm vào, cuộn vừa chặt tay. 4) Rán lần đầu lửa vừa đến khi nem chín khoảng 70–80%, để nguội trên giấy thấm dầu (có thể chia phần cấp đông). 5) Trước khi ăn, rán lại lần hai cho vàng giòn; ăn nóng với cơm hoặc bún.",
+      "tip": null,
+      "source_code": "vnexpress",
+      "recipe_source": "VnExpress — Bùi Thủy, «Công thức và Cách làm nem rán Hà Nội chuẩn nhất» (25/1/2022)",
+      "source_url": "https://vnexpress.net/doi-song-cooking-nem-ran-4419689.html",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "3f50f227-778e-5027-b8c3-8a231b360e70",
+      "dish_id": "e28b4a58-0379-5343-a4e2-23f5cfd150d9",
+      "dish_name": "Chả cốm",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": "4–6 người",
+      "servings": null,
+      "time_text": "50 phút",
+      "total_minutes": 50,
+      "ingredients_text": "400 gr giò sống; 200 gr thịt nạc vai băm; 150 gr cốm tươi; 100 gr mỡ phần; Gia vị: mắm, hạt tiêu, mì chính, đường; hành khô, muối, lá chuối, mỡ lợn để rán (nguồn không ghi định lượng)",
+      "steps_text": "Công thức tham khảo từ VnExpress — Bùi Thủy, «Cách làm chả cốm Hà Nội» (27/9/2025), chưa nấu thử.\n1) Chọn cốm già để làm chả. 2) Băm thịt nạc; luộc sơ mỡ phần rồi băm; băm nhỏ hành khô. 3) Trộn giò sống, thịt, mỡ, hành và cốm, nêm nhẹ tay (giò sống đã mặn), nhồi đến khi dẻo đều, chia viên và ấn dẹt. 4) Lót lá chuối, hấp chả lửa nhỏ đến chín, để nguội hẳn (có thể chia phần cấp đông). 5) Rán chả trong mỡ lợn lửa vừa cho vàng giòn hai mặt; chấm nước mắm tiêu ớt.",
+      "tip": null,
+      "source_code": "vnexpress",
+      "recipe_source": "VnExpress — Bùi Thủy, «Cách làm chả cốm Hà Nội» (27/9/2025)",
+      "source_url": "https://vnexpress.net/cach-lam-cha-com-ha-noi-4944421.html",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "9e26c953-03e3-5e32-bd72-13c188d16690",
+      "dish_id": "5a6ab92d-046f-519e-a326-7ca56df8b043",
+      "dish_name": "Xôi xéo",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": "5–6 người",
+      "servings": null,
+      "time_text": "90 phút",
+      "total_minutes": 90,
+      "ingredients_text": "600 gr gạo nếp cái hoa vàng; 300 gr đỗ xanh; 100 gr hành khô; Mỡ gà hoặc mỡ lợn; Muối; Nghệ tươi hoặc bột nghệ",
+      "steps_text": "Công thức tham khảo từ VnExpress — Bùi Thủy, «Cách làm xôi xéo Hà Nội» (4/10/2024), chưa nấu thử.\n1) Ngâm gạo nếp 6–8 giờ (có thể ngâm cùng nghệ cho vàng), để ráo, trộn chút muối. 2) Ngâm đỗ xanh khoảng 4 giờ, đãi đến khi nước trong, để ráo. 3) Đồ xôi lần một, xới ra cho nguội và tơi; vẩy chút nước lạnh, trộn mỡ gà nếu có rồi đồ tiếp lần hai. 4) Đồ chín đỗ, giã nhuyễn khi còn nóng rồi nắm thành khối chắc. 5) Phi hành với mỡ hoặc dầu đến vàng nhạt, vớt ra cho giòn; giữ lại mỡ hành. 6) Xới xôi ra lá, thái đỗ thật mỏng phủ lên, rưới mỡ hành và rắc hành phi.",
+      "tip": null,
+      "source_code": "vnexpress",
+      "recipe_source": "VnExpress — Bùi Thủy, «Cách làm xôi xéo Hà Nội» (4/10/2024)",
+      "source_url": "https://vnexpress.net/xoi-xeo-ha-noi-4800338.html",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "ecbf6f94-a912-58fa-945a-54f8def2242a",
+      "dish_id": "0fd2ea69-a65e-516f-9a6d-535d705ab17e",
+      "dish_name": "Bún ốc",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": "6–8 người",
+      "servings": null,
+      "time_text": "120 phút",
+      "total_minutes": 120,
+      "ingredients_text": "2 kg ốc nhồi ta; 2 kg ốc vặn hoặc 1 kg xương hom nấu nước dùng (tùy chọn); 4 củ hành khô; 4 quả cà chua; Gia vị: muối hạt, mắm truyền thống, mắm tôm, ớt bột, giấm bỗng nếp; Rau ghém: xà lách, tía tô, kinh giới, hoa chuối, thân chuối, hành hoa; Bún rối sợi nhỏ; Mỡ lợn",
+      "steps_text": "Công thức tham khảo từ VnExpress — Bùi Thủy, «Cách làm bún ốc Hà Nội theo lối cũ» (24/8/2024), chưa nấu thử.\n1) Ngâm ốc nhồi trong nước vo gạo ít nhất một ngày, thay nước vài lần; rửa lại với nước pha giấm bỗng và ớt cho hết mùi bùn. Ốc vặn rửa sạch để lấy nước dùng. 2) Lấy thịt ốc: hoặc xào nhanh lửa lớn với hành để giữ độ giòn, hoặc luộc sơ và giữ nước luộc. 3) Phi hành khô với mỡ lợn, cho ớt bột vào chưng lửa nhỏ, nêm chút mắm hoặc muối làm ớt chưng. 4) Băm một phần cà chua để xào lấy màu, phần còn lại bổ múi cau. 5) Lọc nước luộc ốc (có thể pha thêm nước ninh xương hom); xào hành với cà chua băm, lọc lấy nước màu cho vào nồi, nêm vừa, cuối cùng thêm giấm bỗng. 6) Trần bún, xếp ốc, cà chua, hành, tía tô, chan nước dùng nóng; ăn với mắm tôm, ớt chưng và rau ghém.",
+      "tip": null,
+      "source_code": "vnexpress",
+      "recipe_source": "VnExpress — Bùi Thủy, «Cách làm bún ốc Hà Nội theo lối cũ» (24/8/2024)",
+      "source_url": "https://vnexpress.net/bun-oc-ha-noi-theo-loi-cu-4785234.html",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "359ccdfd-e0ac-5d1e-bff0-826b391036f9",
+      "dish_id": "2f41e428-fbf1-5543-a724-a3b0848917b9",
+      "dish_name": "Miến gà",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": "4–5 người",
+      "servings": null,
+      "time_text": "40 phút",
+      "total_minutes": 40,
+      "ingredients_text": "1 con gà mái ta; 1 nhánh gừng; 1 củ hành tây; 1 bó rau mùi; 1 nắm hành lá; Mắm; Muối hạt; Chanh; Ớt; Lá chanh; Miến dong",
+      "steps_text": "Công thức tham khảo từ VnExpress — Bùi Thủy, «Miến gà ấm nóng ngày đông» (15/12/2024), chưa nấu thử.\n1) Chà gà với chanh và muối, rửa sạch. 2) Trụng gà qua nước sôi, luộc cùng gừng rồi tắt bếp ủ cho chín đều; ngâm nước lạnh cho da giòn. 3) Lọc thịt gà thành miếng; ninh xương với hành tây nướng ở lửa nhỏ, hớt bọt, nêm mắm cuối cùng và chút đường phèn. 4) Ngâm miến dong cho mềm rồi cắt đoạn. 5) Ngâm hành tây thái mỏng với nước đá; thái rau mùi, hành lá, lá chanh; chuẩn bị chanh, ớt. 6) Trần miến, xếp gà và rau lên, chan nước dùng nóng.",
+      "tip": null,
+      "source_code": "vnexpress",
+      "recipe_source": "VnExpress — Bùi Thủy, «Miến gà ấm nóng ngày đông» (15/12/2024)",
+      "source_url": "https://vnexpress.net/mien-ga-am-nong-ngay-dong-4827824.html",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "3e13fd9d-5802-5a7b-a933-82d5f1504361",
+      "dish_id": "0ea3b941-67a6-505d-b561-3541fd688d32",
+      "dish_name": "Thịt quay giòn bì",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": "5–6 người",
+      "servings": null,
+      "time_text": "90 phút (chưa tính thời gian hong khô bì)",
+      "total_minutes": null,
+      "ingredients_text": "1 kg thịt ba chỉ (nạc mỡ đan xen); Muối: 1 thìa cà phê; Đường: 1 thìa cà phê; Hạt nêm: 1 thìa cà phê; Hạt tiêu xay: 2 thìa cà phê; Bột hành: 2 thìa cà phê; Bột tỏi: 2 thìa cà phê; Ngũ vị hương: 2 thìa cà phê; Ớt bột paprika: 2 thìa cà phê; Rượu mai quế lộ (nếu có); Dầu ăn",
+      "steps_text": "Công thức tham khảo từ VnExpress — Bùi Thủy, «Bí quyết làm ba chỉ quay giòn bì đơn giản tại nhà» (29/6/2023), chưa nấu thử.\n1) Cạo sạch lông, rửa và thấm khô miếng ba chỉ; khứa ô vuông trên bì, không rạch sâu vào mỡ. 2) Trộn các loại gia vị, xoa đều phần thịt và các khe, giữ cho bì khô, không dính gia vị. 3) Bọc giấy bạc phần thịt, để bì hở; làm khô bì trong ngăn mát ít nhất 6 giờ (hoặc phơi nắng, sấy). 4) Để thịt về nhiệt độ phòng, quét lớp dầu mỏng và rắc muối lên bì. 5) Làm nóng lò 230°C khoảng 15 phút, nướng 20 phút đầu; hạ 180–200°C nướng 40–45 phút cho chín thịt; tăng 230–240°C thêm 10–15 phút cho bì nổ, che giấy bạc chỗ nổ trước.",
+      "tip": null,
+      "source_code": "vnexpress",
+      "recipe_source": "VnExpress — Bùi Thủy, «Bí quyết làm ba chỉ quay giòn bì đơn giản tại nhà» (29/6/2023)",
+      "source_url": "https://vnexpress.net/doi-song-cooking-ba-chi-4623347.html",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "a7d45790-ae0a-58c7-b7a1-ac92a4e35703",
+      "dish_id": "13c04914-a073-5206-9bdf-96fe6147ac6f",
+      "dish_name": "Trứng đúc thịt",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": "4–6 người",
+      "servings": null,
+      "time_text": "30 phút",
+      "total_minutes": 30,
+      "ingredients_text": "300 gr thịt nạc vai băm; 4 - 5 quả trứng gà; 1 nắm hành hoa; Gia vị: mắm, muối, mì chính (tùy chọn), hạt tiêu; Mỡ lợn hoặc dầu ăn",
+      "steps_text": "Công thức tham khảo từ VnExpress — Bùi Thủy, «Cách làm trứng đúc thịt - món ăn 'quốc dân'» (13/3/2025), chưa nấu thử.\n1) Chọn nạc vai có chút mỡ, bỏ bì, băm nhỏ. 2) Rửa, thái nhỏ hành hoa; có thể thêm chút nước lọc (tùy chọn chút rượu trắng) cho đỡ tanh. 3) Cho thịt, trứng, hành vào bát sâu lòng, nêm gia vị rồi đánh thật đều cho thịt tơi. 4) Đun nóng mỡ, hạ lửa nhỏ, đổ từng mẻ vừa đĩa, đậy vung để mặt dưới vàng và se. 5) Dùng đĩa úp để lật, rán tiếp mặt kia đến khi rìa giòn, trứng xốp; cắt miếng, ăn nóng.",
+      "tip": null,
+      "source_code": "vnexpress",
+      "recipe_source": "VnExpress — Bùi Thủy, «Cách làm trứng đúc thịt - món ăn 'quốc dân'» (13/3/2025)",
+      "source_url": "https://vnexpress.net/trung-duc-thit-mon-an-quoc-dan-4860439.html",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "a77f33c5-339a-57ce-a6ad-197f19e9f35c",
+      "dish_id": "1e5d58f6-be02-54b7-8947-351c689fa7bc",
+      "dish_name": "Bún mọc",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": "6 tô bún",
+      "servings": 6,
+      "time_text": null,
+      "total_minutes": null,
+      "ingredients_text": "700 g bún; 500 g xương ống; 400 g giò sống (mọc); 20 g mộc nhĩ; 30 g nấm hương; 2 cây dọc mùng; Một ít mùi ta (ngò rí); Hành lá; Hạt nêm; Nước mắm; Mì chính; Tiêu",
+      "steps_text": "Công thức tham khảo từ VnExpress — Đinh Hương, «Bún mọc dọc mùng phong cách Hà Nội» (28/11/2014), chưa nấu thử.\n1) Chần xương qua nước sôi, rửa sạch rồi hầm khoảng 60 phút, vớt bọt. 2) Tước vỏ dọc mùng, ngâm muối, trụng nước ấm rồi vắt khô. 3) Rửa nấm hương bằng nước lạnh, không ngâm. 4) Băm mộc nhĩ, trộn với giò sống và gia vị, vo viên, để lạnh. 5) Cho nấm hương vào nồi nước dùng nấu khoảng 15 phút; thả mọc, chờ nổi thì đun thêm khoảng 1 phút, nêm lại. 6) Trần bún, cho vào tô cùng mọc, nấm, dọc mùng, hành, mùi, tiêu rồi chan nước dùng sôi.",
+      "tip": null,
+      "source_code": "vnexpress",
+      "recipe_source": "VnExpress — Đinh Hương, «Bún mọc dọc mùng phong cách Hà Nội» (28/11/2014)",
+      "source_url": "https://vnexpress.net/bun-moc-doc-mung-phong-cach-ha-noi-3112934.html",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
+    },
+    {
+      "id": "2a3d2fd8-0478-5dae-8d53-e76c75918eeb",
+      "dish_id": "61c78e60-aa66-5bf1-9e6b-6b9d16df7303",
+      "dish_name": "Cháo sườn",
+      "region": "Bac",
+      "in_90": true,
+      "servings_text": "5–6 người",
+      "servings": null,
+      "time_text": "90 phút",
+      "total_minutes": 90,
+      "ingredients_text": "800 g xương lợn (nấu nước dùng); 500 g sụn sườn non; 300 g bột gạo tẻ; 100 g bột gạo nếp; Muối, nước mắm, hạt tiêu xay, ớt bột; Hành khô; Muối hạt; 2 lít nước (pha bột); Ruốc, quẩy ăn kèm (tùy chọn); Hành phi, trứng cút (tùy chọn)",
+      "steps_text": "Công thức tham khảo từ VnExpress — Bùi Thủy, «Cháo sườn Hà Nội» (15/11/2024), chưa nấu thử.\n1) Pha bột gạo tẻ và nếp với nước, để lắng, chắt bỏ nước trên, làm lại 2–3 lần (hoặc ngâm gạo xay thành bột nước). 2) Ngâm xương và sườn trong nước muối loãng, rửa, chần qua rồi rửa lại. 3) Ninh sườn, xương với hành khô và chút muối, hớt bọt đến khi sườn mềm; vớt sườn thái mỏng, ướp nhẹ; lọc nước xương, gỡ thêm thịt dính xương. 4) Đổ bột vào nước dùng đã lọc, đun lửa nhỏ và khuấy liên tục đến khi cháo sánh mịn; loãng hay đặc thì chỉnh bằng nước sôi. 5) Cho sườn vào, nêm lại, khuấy thêm vài phút. 6) Múc ra bát, ăn với quẩy, ruốc, rắc tiêu và ớt bột.",
+      "tip": null,
+      "source_code": "vnexpress",
+      "recipe_source": "VnExpress — Bùi Thủy, «Cháo sườn Hà Nội» (15/11/2024)",
+      "source_url": "https://vnexpress.net/chao-suon-ha-noi-4816507.html",
+      "source_accessed_date": "2026-11-23",
+      "recipe_status": "tham_khao_online"
     }
   ],
   "ingredients": [
@@ -2126,6 +2534,871 @@
       "recipe_id": "6c890c6a-2613-54dc-8f66-d3b5509f3f8f",
       "sort_order": 8,
       "text": "nước mắm pha chua ngọt"
+    },
+    {
+      "recipe_id": "19071b2d-c768-5b04-90ff-5f4eb8a218a3",
+      "sort_order": 1,
+      "text": "1 con gà mái (2 kg)"
+    },
+    {
+      "recipe_id": "19071b2d-c768-5b04-90ff-5f4eb8a218a3",
+      "sort_order": 2,
+      "text": "2 bộ xương gà"
+    },
+    {
+      "recipe_id": "19071b2d-c768-5b04-90ff-5f4eb8a218a3",
+      "sort_order": 3,
+      "text": "sá sùng (nấu nước dùng)"
+    },
+    {
+      "recipe_id": "19071b2d-c768-5b04-90ff-5f4eb8a218a3",
+      "sort_order": 4,
+      "text": "hành khô, hành tây, gừng, rễ mùi, rễ hành lá, hạt mùi"
+    },
+    {
+      "recipe_id": "19071b2d-c768-5b04-90ff-5f4eb8a218a3",
+      "sort_order": 5,
+      "text": "mắm ngon, muối, đường phèn"
+    },
+    {
+      "recipe_id": "19071b2d-c768-5b04-90ff-5f4eb8a218a3",
+      "sort_order": 6,
+      "text": "hành lá, rau mùi, lá chanh"
+    },
+    {
+      "recipe_id": "19071b2d-c768-5b04-90ff-5f4eb8a218a3",
+      "sort_order": 7,
+      "text": "bánh phở tươi"
+    },
+    {
+      "recipe_id": "19071b2d-c768-5b04-90ff-5f4eb8a218a3",
+      "sort_order": 8,
+      "text": "giấm tỏi, chanh, ớt"
+    },
+    {
+      "recipe_id": "6b40c559-45a4-531a-b06a-a99e6247f5c6",
+      "sort_order": 1,
+      "text": "Gà ta 1 con (1,2–1,3 kg)"
+    },
+    {
+      "recipe_id": "6b40c559-45a4-531a-b06a-a99e6247f5c6",
+      "sort_order": 2,
+      "text": "Trứng gà 2 quả"
+    },
+    {
+      "recipe_id": "6b40c559-45a4-531a-b06a-a99e6247f5c6",
+      "sort_order": 3,
+      "text": "Giò lụa 100 gram"
+    },
+    {
+      "recipe_id": "6b40c559-45a4-531a-b06a-a99e6247f5c6",
+      "sort_order": 4,
+      "text": "Xương hom lợn 500 gram"
+    },
+    {
+      "recipe_id": "6b40c559-45a4-531a-b06a-a99e6247f5c6",
+      "sort_order": 5,
+      "text": "Tôm khô 50 gram"
+    },
+    {
+      "recipe_id": "6b40c559-45a4-531a-b06a-a99e6247f5c6",
+      "sort_order": 6,
+      "text": "Sá sùng 2–3 con hoặc 2–3 cái râu mực khô"
+    },
+    {
+      "recipe_id": "6b40c559-45a4-531a-b06a-a99e6247f5c6",
+      "sort_order": 7,
+      "text": "Bún tươi 1,5 kg"
+    },
+    {
+      "recipe_id": "6b40c559-45a4-531a-b06a-a99e6247f5c6",
+      "sort_order": 8,
+      "text": "Nấm hương 20 gram"
+    },
+    {
+      "recipe_id": "6b40c559-45a4-531a-b06a-a99e6247f5c6",
+      "sort_order": 9,
+      "text": "Củ cải sợi khô 50 gram"
+    },
+    {
+      "recipe_id": "6b40c559-45a4-531a-b06a-a99e6247f5c6",
+      "sort_order": 10,
+      "text": "Hành tây 1 củ vừa"
+    },
+    {
+      "recipe_id": "6b40c559-45a4-531a-b06a-a99e6247f5c6",
+      "sort_order": 11,
+      "text": "Hành khô 6 củ"
+    },
+    {
+      "recipe_id": "6b40c559-45a4-531a-b06a-a99e6247f5c6",
+      "sort_order": 12,
+      "text": "Rau răm, gừng, hành lá, chanh, ớt"
+    },
+    {
+      "recipe_id": "6b40c559-45a4-531a-b06a-a99e6247f5c6",
+      "sort_order": 13,
+      "text": "Gia vị: mắm tôm, nước mắm, bột ngọt, dầu ăn, hạt nêm, muối, giấm, đường trắng, tinh dầu cà cuống (nếu có)"
+    },
+    {
+      "recipe_id": "eb6a8670-4f23-513c-9edf-760c9d929473",
+      "sort_order": 1,
+      "text": "Đậu phụ chiên 10 miếng"
+    },
+    {
+      "recipe_id": "eb6a8670-4f23-513c-9edf-760c9d929473",
+      "sort_order": 2,
+      "text": "Thịt ba chỉ 500gr"
+    },
+    {
+      "recipe_id": "eb6a8670-4f23-513c-9edf-760c9d929473",
+      "sort_order": 3,
+      "text": "Chả cốm 300gr"
+    },
+    {
+      "recipe_id": "eb6a8670-4f23-513c-9edf-760c9d929473",
+      "sort_order": 4,
+      "text": "Bún tươi 1kg"
+    },
+    {
+      "recipe_id": "eb6a8670-4f23-513c-9edf-760c9d929473",
+      "sort_order": 5,
+      "text": "Mắm tôm 1/2 bát"
+    },
+    {
+      "recipe_id": "eb6a8670-4f23-513c-9edf-760c9d929473",
+      "sort_order": 6,
+      "text": "Ớt băm 1 muỗng cà phê"
+    },
+    {
+      "recipe_id": "eb6a8670-4f23-513c-9edf-760c9d929473",
+      "sort_order": 7,
+      "text": "Nước cốt chanh 1 muỗng canh"
+    },
+    {
+      "recipe_id": "eb6a8670-4f23-513c-9edf-760c9d929473",
+      "sort_order": 8,
+      "text": "Đường trắng 1 muỗng canh"
+    },
+    {
+      "recipe_id": "eb6a8670-4f23-513c-9edf-760c9d929473",
+      "sort_order": 9,
+      "text": "Bột ngọt 1 muỗng cà phê"
+    },
+    {
+      "recipe_id": "eb6a8670-4f23-513c-9edf-760c9d929473",
+      "sort_order": 10,
+      "text": "Dầu ăn 6 muỗng canh"
+    },
+    {
+      "recipe_id": "eb6a8670-4f23-513c-9edf-760c9d929473",
+      "sort_order": 11,
+      "text": "Tía tô 100gr, rau thơm các loại 50gr"
+    },
+    {
+      "recipe_id": "eb6a8670-4f23-513c-9edf-760c9d929473",
+      "sort_order": 12,
+      "text": "Dưa chuột 3 quả"
+    },
+    {
+      "recipe_id": "dbc97abb-f306-56ea-a6a4-de58c91f396c",
+      "sort_order": 1,
+      "text": "1 kg cá lăng phi lê"
+    },
+    {
+      "recipe_id": "dbc97abb-f306-56ea-a6a4-de58c91f396c",
+      "sort_order": 2,
+      "text": "1 củ riềng bánh tẻ"
+    },
+    {
+      "recipe_id": "dbc97abb-f306-56ea-a6a4-de58c91f396c",
+      "sort_order": 3,
+      "text": "1 củ nghệ tươi"
+    },
+    {
+      "recipe_id": "dbc97abb-f306-56ea-a6a4-de58c91f396c",
+      "sort_order": 4,
+      "text": "mẻ (cơm mẻ)"
+    },
+    {
+      "recipe_id": "dbc97abb-f306-56ea-a6a4-de58c91f396c",
+      "sort_order": 5,
+      "text": "nước mắm ngon, mắm tôm, mì chính, hạt tiêu, tinh dầu cà cuống"
+    },
+    {
+      "recipe_id": "dbc97abb-f306-56ea-a6a4-de58c91f396c",
+      "sort_order": 6,
+      "text": "thì là, hành hoa, húng Láng, rau mùi"
+    },
+    {
+      "recipe_id": "dbc97abb-f306-56ea-a6a4-de58c91f396c",
+      "sort_order": 7,
+      "text": "lạc rang, hành phi, chanh, ớt, hành tây (tùy chọn)"
+    },
+    {
+      "recipe_id": "dbc97abb-f306-56ea-a6a4-de58c91f396c",
+      "sort_order": 8,
+      "text": "mỡ lợn hoặc mỡ gà ta"
+    },
+    {
+      "recipe_id": "dbc97abb-f306-56ea-a6a4-de58c91f396c",
+      "sort_order": 9,
+      "text": "bún"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 1,
+      "text": "Cua đồng tự xay hoặc cua xay sẵn đóng gói: 500g"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 2,
+      "text": "Gạch cua: 20g"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 3,
+      "text": "Bắp: 1 trái"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 4,
+      "text": "Hành tây: 1/2 củ"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 5,
+      "text": "Bắp cải hoặc củ cải đường: 1 nửa"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 6,
+      "text": "Cà chua: 2 trái"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 7,
+      "text": "Nước cốt me: 15g"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 8,
+      "text": "Mắm tôm: 15g"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 9,
+      "text": "Tôm khô: 5g"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 10,
+      "text": "Hành tím"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 11,
+      "text": "Hành lá"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 12,
+      "text": "Rau mùi"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 13,
+      "text": "Chả cá"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 14,
+      "text": "Chả lá lốt"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 15,
+      "text": "Tôm"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 16,
+      "text": "Chả giò (tùy sở thích)"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 17,
+      "text": "Bánh đa đỏ"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 18,
+      "text": "Rau giá"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 19,
+      "text": "Rau muống"
+    },
+    {
+      "recipe_id": "1d5d42c2-5622-5d96-91ca-a06d31ba7d90",
+      "sort_order": 20,
+      "text": "Bột canh, nước mắm, đường, tiêu"
+    },
+    {
+      "recipe_id": "a4b37191-3902-5152-9918-4e9861b0ed18",
+      "sort_order": 1,
+      "text": "Gà nguyên con (nên chọn gà ta)"
+    },
+    {
+      "recipe_id": "a4b37191-3902-5152-9918-4e9861b0ed18",
+      "sort_order": 2,
+      "text": "1 củ gừng"
+    },
+    {
+      "recipe_id": "a4b37191-3902-5152-9918-4e9861b0ed18",
+      "sort_order": 3,
+      "text": "Hành củ"
+    },
+    {
+      "recipe_id": "a4b37191-3902-5152-9918-4e9861b0ed18",
+      "sort_order": 4,
+      "text": "Hành lá"
+    },
+    {
+      "recipe_id": "a4b37191-3902-5152-9918-4e9861b0ed18",
+      "sort_order": 5,
+      "text": "Muối (nửa thìa cà phê khi nấu nước luộc)"
+    },
+    {
+      "recipe_id": "a4b37191-3902-5152-9918-4e9861b0ed18",
+      "sort_order": 6,
+      "text": "Lá chanh (thái nhỏ rắc lên khi bày, tùy chọn)"
+    },
+    {
+      "recipe_id": "a4b37191-3902-5152-9918-4e9861b0ed18",
+      "sort_order": 7,
+      "text": "Tùy chọn: tiêu, mỡ gà, nghệ (quét da)"
+    },
+    {
+      "recipe_id": "9d72e04b-a53e-56ff-86c4-bc025dd16894",
+      "sort_order": 1,
+      "text": "Thịt chân giò: 500gr"
+    },
+    {
+      "recipe_id": "9d72e04b-a53e-56ff-86c4-bc025dd16894",
+      "sort_order": 2,
+      "text": "Da lợn: 100gr"
+    },
+    {
+      "recipe_id": "9d72e04b-a53e-56ff-86c4-bc025dd16894",
+      "sort_order": 3,
+      "text": "Nấm hương: 10-15 tai"
+    },
+    {
+      "recipe_id": "9d72e04b-a53e-56ff-86c4-bc025dd16894",
+      "sort_order": 4,
+      "text": "Mộc nhĩ: 20gr"
+    },
+    {
+      "recipe_id": "9d72e04b-a53e-56ff-86c4-bc025dd16894",
+      "sort_order": 5,
+      "text": "Hành tím: 2 củ"
+    },
+    {
+      "recipe_id": "9d72e04b-a53e-56ff-86c4-bc025dd16894",
+      "sort_order": 6,
+      "text": "Gia vị: Nước mắm, tiêu xay, tiêu vỡ, bột canh"
+    },
+    {
+      "recipe_id": "9d72e04b-a53e-56ff-86c4-bc025dd16894",
+      "sort_order": 7,
+      "text": "Tùy chọn: thịt gà, thịt ngan, thịt ba chỉ, lưỡi lợn, tai lợn, mũi lợn"
+    },
+    {
+      "recipe_id": "c313f2c4-b8c9-54ab-bee0-45eabd864ab0",
+      "sort_order": 1,
+      "text": "200 gr cua đồng"
+    },
+    {
+      "recipe_id": "c313f2c4-b8c9-54ab-bee0-45eabd864ab0",
+      "sort_order": 2,
+      "text": "1 bó rau đay"
+    },
+    {
+      "recipe_id": "c313f2c4-b8c9-54ab-bee0-45eabd864ab0",
+      "sort_order": 3,
+      "text": "1 bó mồng tơi"
+    },
+    {
+      "recipe_id": "c313f2c4-b8c9-54ab-bee0-45eabd864ab0",
+      "sort_order": 4,
+      "text": "1-2 quả mướp hương"
+    },
+    {
+      "recipe_id": "c313f2c4-b8c9-54ab-bee0-45eabd864ab0",
+      "sort_order": 5,
+      "text": "Gia vị: Muối, hạt nêm (hoặc mì chính)"
+    },
+    {
+      "recipe_id": "003910fc-c488-57ba-8886-49f54a1d260e",
+      "sort_order": 1,
+      "text": "1 bó rau muống"
+    },
+    {
+      "recipe_id": "003910fc-c488-57ba-8886-49f54a1d260e",
+      "sort_order": 2,
+      "text": "1 củ tỏi lớn"
+    },
+    {
+      "recipe_id": "003910fc-c488-57ba-8886-49f54a1d260e",
+      "sort_order": 3,
+      "text": "Gia vị: Muối, mắm tôm, hạt nêm"
+    },
+    {
+      "recipe_id": "003910fc-c488-57ba-8886-49f54a1d260e",
+      "sort_order": 4,
+      "text": "Mỡ lợn hoặc dầu ăn"
+    },
+    {
+      "recipe_id": "003910fc-c488-57ba-8886-49f54a1d260e",
+      "sort_order": 5,
+      "text": "Nước đá"
+    },
+    {
+      "recipe_id": "003910fc-c488-57ba-8886-49f54a1d260e",
+      "sort_order": 6,
+      "text": "Rau ngổ, kinh giới ăn kèm (tùy chọn)"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 1,
+      "text": "600 gr thịt nạc vai xay"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 2,
+      "text": "200 gr tôm nõn"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 3,
+      "text": "5 gr mộc nhĩ khô"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 4,
+      "text": "3 gr nấm hương khô"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 5,
+      "text": "1 nắm miến"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 6,
+      "text": "1 củ đậu (hoặc giá đỗ, tùy chọn)"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 7,
+      "text": "1 củ hành tây"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 8,
+      "text": "1/2 củ su hào"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 9,
+      "text": "1/2 củ cà rốt"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 10,
+      "text": "1 nắm hành hoa"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 11,
+      "text": "1 bó rau mùi ta"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 12,
+      "text": "1 - 2 quả trứng"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 13,
+      "text": "2 - 3 củ hành khô"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 14,
+      "text": "Gia vị: mắm, muối, hạt nêm, hạt tiêu"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 15,
+      "text": "Bánh đa nem để gói"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 16,
+      "text": "Bia để phết bánh đa nem cho giòn"
+    },
+    {
+      "recipe_id": "fe15e051-053a-57a6-9a0b-68a5502d333e",
+      "sort_order": 17,
+      "text": "Dầu ăn"
+    },
+    {
+      "recipe_id": "3f50f227-778e-5027-b8c3-8a231b360e70",
+      "sort_order": 1,
+      "text": "400 gr giò sống"
+    },
+    {
+      "recipe_id": "3f50f227-778e-5027-b8c3-8a231b360e70",
+      "sort_order": 2,
+      "text": "200 gr thịt nạc vai băm"
+    },
+    {
+      "recipe_id": "3f50f227-778e-5027-b8c3-8a231b360e70",
+      "sort_order": 3,
+      "text": "150 gr cốm tươi"
+    },
+    {
+      "recipe_id": "3f50f227-778e-5027-b8c3-8a231b360e70",
+      "sort_order": 4,
+      "text": "100 gr mỡ phần"
+    },
+    {
+      "recipe_id": "3f50f227-778e-5027-b8c3-8a231b360e70",
+      "sort_order": 5,
+      "text": "Gia vị: mắm, hạt tiêu, mì chính, đường"
+    },
+    {
+      "recipe_id": "3f50f227-778e-5027-b8c3-8a231b360e70",
+      "sort_order": 6,
+      "text": "hành khô, muối, lá chuối, mỡ lợn để rán (nguồn không ghi định lượng)"
+    },
+    {
+      "recipe_id": "9e26c953-03e3-5e32-bd72-13c188d16690",
+      "sort_order": 1,
+      "text": "600 gr gạo nếp cái hoa vàng"
+    },
+    {
+      "recipe_id": "9e26c953-03e3-5e32-bd72-13c188d16690",
+      "sort_order": 2,
+      "text": "300 gr đỗ xanh"
+    },
+    {
+      "recipe_id": "9e26c953-03e3-5e32-bd72-13c188d16690",
+      "sort_order": 3,
+      "text": "100 gr hành khô"
+    },
+    {
+      "recipe_id": "9e26c953-03e3-5e32-bd72-13c188d16690",
+      "sort_order": 4,
+      "text": "Mỡ gà hoặc mỡ lợn"
+    },
+    {
+      "recipe_id": "9e26c953-03e3-5e32-bd72-13c188d16690",
+      "sort_order": 5,
+      "text": "Muối"
+    },
+    {
+      "recipe_id": "9e26c953-03e3-5e32-bd72-13c188d16690",
+      "sort_order": 6,
+      "text": "Nghệ tươi hoặc bột nghệ"
+    },
+    {
+      "recipe_id": "ecbf6f94-a912-58fa-945a-54f8def2242a",
+      "sort_order": 1,
+      "text": "2 kg ốc nhồi ta"
+    },
+    {
+      "recipe_id": "ecbf6f94-a912-58fa-945a-54f8def2242a",
+      "sort_order": 2,
+      "text": "2 kg ốc vặn hoặc 1 kg xương hom nấu nước dùng (tùy chọn)"
+    },
+    {
+      "recipe_id": "ecbf6f94-a912-58fa-945a-54f8def2242a",
+      "sort_order": 3,
+      "text": "4 củ hành khô"
+    },
+    {
+      "recipe_id": "ecbf6f94-a912-58fa-945a-54f8def2242a",
+      "sort_order": 4,
+      "text": "4 quả cà chua"
+    },
+    {
+      "recipe_id": "ecbf6f94-a912-58fa-945a-54f8def2242a",
+      "sort_order": 5,
+      "text": "Gia vị: muối hạt, mắm truyền thống, mắm tôm, ớt bột, giấm bỗng nếp"
+    },
+    {
+      "recipe_id": "ecbf6f94-a912-58fa-945a-54f8def2242a",
+      "sort_order": 6,
+      "text": "Rau ghém: xà lách, tía tô, kinh giới, hoa chuối, thân chuối, hành hoa"
+    },
+    {
+      "recipe_id": "ecbf6f94-a912-58fa-945a-54f8def2242a",
+      "sort_order": 7,
+      "text": "Bún rối sợi nhỏ"
+    },
+    {
+      "recipe_id": "ecbf6f94-a912-58fa-945a-54f8def2242a",
+      "sort_order": 8,
+      "text": "Mỡ lợn"
+    },
+    {
+      "recipe_id": "359ccdfd-e0ac-5d1e-bff0-826b391036f9",
+      "sort_order": 1,
+      "text": "1 con gà mái ta"
+    },
+    {
+      "recipe_id": "359ccdfd-e0ac-5d1e-bff0-826b391036f9",
+      "sort_order": 2,
+      "text": "1 nhánh gừng"
+    },
+    {
+      "recipe_id": "359ccdfd-e0ac-5d1e-bff0-826b391036f9",
+      "sort_order": 3,
+      "text": "1 củ hành tây"
+    },
+    {
+      "recipe_id": "359ccdfd-e0ac-5d1e-bff0-826b391036f9",
+      "sort_order": 4,
+      "text": "1 bó rau mùi"
+    },
+    {
+      "recipe_id": "359ccdfd-e0ac-5d1e-bff0-826b391036f9",
+      "sort_order": 5,
+      "text": "1 nắm hành lá"
+    },
+    {
+      "recipe_id": "359ccdfd-e0ac-5d1e-bff0-826b391036f9",
+      "sort_order": 6,
+      "text": "Mắm"
+    },
+    {
+      "recipe_id": "359ccdfd-e0ac-5d1e-bff0-826b391036f9",
+      "sort_order": 7,
+      "text": "Muối hạt"
+    },
+    {
+      "recipe_id": "359ccdfd-e0ac-5d1e-bff0-826b391036f9",
+      "sort_order": 8,
+      "text": "Chanh"
+    },
+    {
+      "recipe_id": "359ccdfd-e0ac-5d1e-bff0-826b391036f9",
+      "sort_order": 9,
+      "text": "Ớt"
+    },
+    {
+      "recipe_id": "359ccdfd-e0ac-5d1e-bff0-826b391036f9",
+      "sort_order": 10,
+      "text": "Lá chanh"
+    },
+    {
+      "recipe_id": "359ccdfd-e0ac-5d1e-bff0-826b391036f9",
+      "sort_order": 11,
+      "text": "Miến dong"
+    },
+    {
+      "recipe_id": "3e13fd9d-5802-5a7b-a933-82d5f1504361",
+      "sort_order": 1,
+      "text": "1 kg thịt ba chỉ (nạc mỡ đan xen)"
+    },
+    {
+      "recipe_id": "3e13fd9d-5802-5a7b-a933-82d5f1504361",
+      "sort_order": 2,
+      "text": "Muối: 1 thìa cà phê"
+    },
+    {
+      "recipe_id": "3e13fd9d-5802-5a7b-a933-82d5f1504361",
+      "sort_order": 3,
+      "text": "Đường: 1 thìa cà phê"
+    },
+    {
+      "recipe_id": "3e13fd9d-5802-5a7b-a933-82d5f1504361",
+      "sort_order": 4,
+      "text": "Hạt nêm: 1 thìa cà phê"
+    },
+    {
+      "recipe_id": "3e13fd9d-5802-5a7b-a933-82d5f1504361",
+      "sort_order": 5,
+      "text": "Hạt tiêu xay: 2 thìa cà phê"
+    },
+    {
+      "recipe_id": "3e13fd9d-5802-5a7b-a933-82d5f1504361",
+      "sort_order": 6,
+      "text": "Bột hành: 2 thìa cà phê"
+    },
+    {
+      "recipe_id": "3e13fd9d-5802-5a7b-a933-82d5f1504361",
+      "sort_order": 7,
+      "text": "Bột tỏi: 2 thìa cà phê"
+    },
+    {
+      "recipe_id": "3e13fd9d-5802-5a7b-a933-82d5f1504361",
+      "sort_order": 8,
+      "text": "Ngũ vị hương: 2 thìa cà phê"
+    },
+    {
+      "recipe_id": "3e13fd9d-5802-5a7b-a933-82d5f1504361",
+      "sort_order": 9,
+      "text": "Ớt bột paprika: 2 thìa cà phê"
+    },
+    {
+      "recipe_id": "3e13fd9d-5802-5a7b-a933-82d5f1504361",
+      "sort_order": 10,
+      "text": "Rượu mai quế lộ (nếu có)"
+    },
+    {
+      "recipe_id": "3e13fd9d-5802-5a7b-a933-82d5f1504361",
+      "sort_order": 11,
+      "text": "Dầu ăn"
+    },
+    {
+      "recipe_id": "a7d45790-ae0a-58c7-b7a1-ac92a4e35703",
+      "sort_order": 1,
+      "text": "300 gr thịt nạc vai băm"
+    },
+    {
+      "recipe_id": "a7d45790-ae0a-58c7-b7a1-ac92a4e35703",
+      "sort_order": 2,
+      "text": "4 - 5 quả trứng gà"
+    },
+    {
+      "recipe_id": "a7d45790-ae0a-58c7-b7a1-ac92a4e35703",
+      "sort_order": 3,
+      "text": "1 nắm hành hoa"
+    },
+    {
+      "recipe_id": "a7d45790-ae0a-58c7-b7a1-ac92a4e35703",
+      "sort_order": 4,
+      "text": "Gia vị: mắm, muối, mì chính (tùy chọn), hạt tiêu"
+    },
+    {
+      "recipe_id": "a7d45790-ae0a-58c7-b7a1-ac92a4e35703",
+      "sort_order": 5,
+      "text": "Mỡ lợn hoặc dầu ăn"
+    },
+    {
+      "recipe_id": "a77f33c5-339a-57ce-a6ad-197f19e9f35c",
+      "sort_order": 1,
+      "text": "700 g bún"
+    },
+    {
+      "recipe_id": "a77f33c5-339a-57ce-a6ad-197f19e9f35c",
+      "sort_order": 2,
+      "text": "500 g xương ống"
+    },
+    {
+      "recipe_id": "a77f33c5-339a-57ce-a6ad-197f19e9f35c",
+      "sort_order": 3,
+      "text": "400 g giò sống (mọc)"
+    },
+    {
+      "recipe_id": "a77f33c5-339a-57ce-a6ad-197f19e9f35c",
+      "sort_order": 4,
+      "text": "20 g mộc nhĩ"
+    },
+    {
+      "recipe_id": "a77f33c5-339a-57ce-a6ad-197f19e9f35c",
+      "sort_order": 5,
+      "text": "30 g nấm hương"
+    },
+    {
+      "recipe_id": "a77f33c5-339a-57ce-a6ad-197f19e9f35c",
+      "sort_order": 6,
+      "text": "2 cây dọc mùng"
+    },
+    {
+      "recipe_id": "a77f33c5-339a-57ce-a6ad-197f19e9f35c",
+      "sort_order": 7,
+      "text": "Một ít mùi ta (ngò rí)"
+    },
+    {
+      "recipe_id": "a77f33c5-339a-57ce-a6ad-197f19e9f35c",
+      "sort_order": 8,
+      "text": "Hành lá"
+    },
+    {
+      "recipe_id": "a77f33c5-339a-57ce-a6ad-197f19e9f35c",
+      "sort_order": 9,
+      "text": "Hạt nêm"
+    },
+    {
+      "recipe_id": "a77f33c5-339a-57ce-a6ad-197f19e9f35c",
+      "sort_order": 10,
+      "text": "Nước mắm"
+    },
+    {
+      "recipe_id": "a77f33c5-339a-57ce-a6ad-197f19e9f35c",
+      "sort_order": 11,
+      "text": "Mì chính"
+    },
+    {
+      "recipe_id": "a77f33c5-339a-57ce-a6ad-197f19e9f35c",
+      "sort_order": 12,
+      "text": "Tiêu"
+    },
+    {
+      "recipe_id": "2a3d2fd8-0478-5dae-8d53-e76c75918eeb",
+      "sort_order": 1,
+      "text": "800 g xương lợn (nấu nước dùng)"
+    },
+    {
+      "recipe_id": "2a3d2fd8-0478-5dae-8d53-e76c75918eeb",
+      "sort_order": 2,
+      "text": "500 g sụn sườn non"
+    },
+    {
+      "recipe_id": "2a3d2fd8-0478-5dae-8d53-e76c75918eeb",
+      "sort_order": 3,
+      "text": "300 g bột gạo tẻ"
+    },
+    {
+      "recipe_id": "2a3d2fd8-0478-5dae-8d53-e76c75918eeb",
+      "sort_order": 4,
+      "text": "100 g bột gạo nếp"
+    },
+    {
+      "recipe_id": "2a3d2fd8-0478-5dae-8d53-e76c75918eeb",
+      "sort_order": 5,
+      "text": "Muối, nước mắm, hạt tiêu xay, ớt bột"
+    },
+    {
+      "recipe_id": "2a3d2fd8-0478-5dae-8d53-e76c75918eeb",
+      "sort_order": 6,
+      "text": "Hành khô"
+    },
+    {
+      "recipe_id": "2a3d2fd8-0478-5dae-8d53-e76c75918eeb",
+      "sort_order": 7,
+      "text": "Muối hạt"
+    },
+    {
+      "recipe_id": "2a3d2fd8-0478-5dae-8d53-e76c75918eeb",
+      "sort_order": 8,
+      "text": "2 lít nước (pha bột)"
+    },
+    {
+      "recipe_id": "2a3d2fd8-0478-5dae-8d53-e76c75918eeb",
+      "sort_order": 9,
+      "text": "Ruốc, quẩy ăn kèm (tùy chọn)"
+    },
+    {
+      "recipe_id": "2a3d2fd8-0478-5dae-8d53-e76c75918eeb",
+      "sort_order": 10,
+      "text": "Hành phi, trứng cút (tùy chọn)"
     }
   ],
   "nutrition_estimates": [
@@ -2580,8 +3853,8 @@
     {
       "dish_id": "78302447-7078-5814-80fc-5154f324349e",
       "is_vegetarian": false,
-      "basis": "Theo tên món: có \"gà\"",
-      "confirmed_by_recipe": false
+      "basis": "Theo công thức tham khảo VnExpress — Bùi Thủy, «Cách làm phở gà Hà Nội truyền thống» (18/8/2023): có thịt gà",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "faa77d86-0b21-50ca-8414-f204602a8b32",
@@ -2591,21 +3864,21 @@
     },
     {
       "dish_id": "f5c5fee1-e9e6-5a5a-9e12-ea6d2daaa016",
-      "is_vegetarian": null,
-      "basis": "Chưa có công thức để xác nhận chay",
-      "confirmed_by_recipe": false
+      "is_vegetarian": false,
+      "basis": "Theo công thức tham khảo VnExpress — độc giả Phùng Thơm, «Bún thang chuẩn vị Hà Nội» (27/8/2021): có thịt gà, giò lụa, tôm khô",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "5f8d8159-d075-5f8e-a1b3-6cb029f1007c",
       "is_vegetarian": false,
-      "basis": "Theo tên món: có \"tôm\"",
-      "confirmed_by_recipe": false
+      "basis": "Theo công thức tham khảo VietNamNet — «Cách làm bún đậu mắm tôm ngon như của bà Nội phim Gạo nếp gạo tẻ» (19/9/2018): có thịt ba chỉ, chả cốm, mắm tôm",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "bc63b8e5-6940-570b-aa4c-17ec19e6d1e5",
       "is_vegetarian": false,
-      "basis": "Theo tên món: có \"cá\"",
-      "confirmed_by_recipe": false
+      "basis": "Theo công thức tham khảo VnExpress — Bùi Thủy, «Cách làm chả cá Hà Nội hương vị xưa» (23/2/2023): có cá, mắm tôm, mỡ động vật",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "e482daca-369d-5d8a-be01-6b73c0a1bb26",
@@ -2616,50 +3889,50 @@
     {
       "dish_id": "06615ea3-5aec-51ad-b882-8818266c111a",
       "is_vegetarian": false,
-      "basis": "Theo tên món: có \"cua\"",
-      "confirmed_by_recipe": false
+      "basis": "Theo công thức tham khảo Vietcetera — Windy, «Ra lò: Ở nhà nấu bánh đa cua như một người Hải Phòng chính hiệu» (06/04/2020): có cua, tôm, chả cá, mắm tôm",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "2c5d7046-a8c5-555a-96cd-5756f0d8cbe7",
       "is_vegetarian": false,
-      "basis": "Theo tên món: có \"gà\"",
-      "confirmed_by_recipe": false
+      "basis": "Theo công thức tham khảo Hello Bacsi — Ngọc Anh, tham vấn y khoa BS Nguyễn Thường Hanh, «Hướng dẫn bạn cách luộc gà ngon nhất» (cập nhật 07/11/2021): có thịt gà",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "3cae751f-5e9a-5b8b-93cf-40d5ab69fbdc",
       "is_vegetarian": false,
-      "basis": "Theo tên món: có \"thịt\"",
-      "confirmed_by_recipe": false
+      "basis": "Theo công thức tham khảo VTC News — Nhật Thùy, «Cách nấu thịt đông chuẩn ngon» (14/12/2024): có thịt chân giò, da lợn",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "9f06a700-bf0a-5cf1-a2f9-a0f691c539c9",
       "is_vegetarian": false,
-      "basis": "Theo tên món: có \"cua\"",
-      "confirmed_by_recipe": false
+      "basis": "Theo công thức tham khảo VnExpress — Bùi Thủy, «Cách nấu canh cua đóng tảng, không bị tanh trong ngày hè nóng bức» (13/5/2022): có cua đồng",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "3d0310c3-3b30-5c87-9b05-67d010c8ab13",
-      "is_vegetarian": null,
-      "basis": "Chưa có công thức để xác nhận chay",
-      "confirmed_by_recipe": false
+      "is_vegetarian": false,
+      "basis": "Theo công thức tham khảo VnExpress — Bùi Thủy, «Cách xào rau muống tỏi xanh giòn dậy mùi thơm» (29/3/2022): có mắm tôm; nguồn cho phép dùng mỡ lợn",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "ae636ce8-02f1-5b56-85b4-a6d1a4656b5a",
       "is_vegetarian": false,
-      "basis": "Theo tên món: có \"nem\"",
-      "confirmed_by_recipe": false
+      "basis": "Theo công thức tham khảo VnExpress — Bùi Thủy, «Công thức và Cách làm nem rán Hà Nội chuẩn nhất» (25/1/2022): có thịt lợn, tôm",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "e28b4a58-0379-5343-a4e2-23f5cfd150d9",
       "is_vegetarian": false,
-      "basis": "Theo tên món: có \"chả\"",
-      "confirmed_by_recipe": false
+      "basis": "Theo công thức tham khảo VnExpress — Bùi Thủy, «Cách làm chả cốm Hà Nội» (27/9/2025): có giò sống, thịt lợn, mỡ lợn",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "5a6ab92d-046f-519e-a326-7ca56df8b043",
-      "is_vegetarian": null,
-      "basis": "Chưa có công thức để xác nhận chay",
-      "confirmed_by_recipe": false
+      "is_vegetarian": false,
+      "basis": "Theo công thức tham khảo VnExpress — Bùi Thủy, «Cách làm xôi xéo Hà Nội» (4/10/2024): nguồn dùng mỡ gà hoặc mỡ lợn (mỡ động vật)",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "dc46721b-f3f1-5f32-b7f9-fe14729d44c1",
@@ -2670,14 +3943,14 @@
     {
       "dish_id": "0fd2ea69-a65e-516f-9a6d-535d705ab17e",
       "is_vegetarian": false,
-      "basis": "Theo tên món: có \"ốc\"",
-      "confirmed_by_recipe": false
+      "basis": "Theo công thức tham khảo VnExpress — Bùi Thủy, «Cách làm bún ốc Hà Nội theo lối cũ» (24/8/2024): có ốc, mắm tôm, mỡ lợn",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "2f41e428-fbf1-5543-a724-a3b0848917b9",
       "is_vegetarian": false,
-      "basis": "Theo tên món: có \"gà\"",
-      "confirmed_by_recipe": false
+      "basis": "Theo công thức tham khảo VnExpress — Bùi Thủy, «Miến gà ấm nóng ngày đông» (15/12/2024): có thịt gà",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "f85a4c23-6e7f-5536-ac01-e91d199104cb",
@@ -2688,8 +3961,8 @@
     {
       "dish_id": "0ea3b941-67a6-505d-b561-3541fd688d32",
       "is_vegetarian": false,
-      "basis": "Theo tên món: có \"thịt\"",
-      "confirmed_by_recipe": false
+      "basis": "Theo công thức tham khảo VnExpress — Bùi Thủy, «Bí quyết làm ba chỉ quay giòn bì đơn giản tại nhà» (29/6/2023): có thịt lợn",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "0c195890-6f59-5519-bfa4-b0c648537aca",
@@ -2700,8 +3973,8 @@
     {
       "dish_id": "13c04914-a073-5206-9bdf-96fe6147ac6f",
       "is_vegetarian": false,
-      "basis": "Theo tên món: có \"thịt\"",
-      "confirmed_by_recipe": false
+      "basis": "Theo công thức tham khảo VnExpress — Bùi Thủy, «Cách làm trứng đúc thịt - món ăn 'quốc dân'» (13/3/2025): có thịt lợn",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "aefa64d8-47d4-50d4-9bb8-ac872e8f997a",
@@ -2742,14 +4015,14 @@
     {
       "dish_id": "1e5d58f6-be02-54b7-8947-351c689fa7bc",
       "is_vegetarian": false,
-      "basis": "Theo tên món: có \"mọc\"",
-      "confirmed_by_recipe": false
+      "basis": "Theo công thức tham khảo VnExpress — Đinh Hương, «Bún mọc dọc mùng phong cách Hà Nội» (28/11/2014): có giò sống (thịt lợn), xương lợn",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "61c78e60-aa66-5bf1-9e6b-6b9d16df7303",
       "is_vegetarian": false,
-      "basis": "Theo tên món: có \"sườn\"",
-      "confirmed_by_recipe": false
+      "basis": "Theo công thức tham khảo VnExpress — Bùi Thủy, «Cháo sườn Hà Nội» (15/11/2024): có sườn, xương lợn",
+      "confirmed_by_recipe": true
     },
     {
       "dish_id": "e3d7de0c-d541-5277-aa22-2d5a52442ec4",
