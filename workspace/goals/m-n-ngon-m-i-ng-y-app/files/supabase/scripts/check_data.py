@@ -1,23 +1,28 @@
 #!/usr/bin/env python3
-"""Kiểm chứng gói dữ liệu Supabase (thiết kế Lệnh 2). In PASS/FAIL từng dòng; có FAIL thì exit 1.
+"""Kiểm chứng gói dữ liệu Supabase sau Lệnh 3 (công thức tham khảo online theo đợt).
+In PASS/FAIL từng dòng; có FAIL thì exit 1.
 
     python scripts/check_data.py
 
 Tùy chọn:
-  BASE_REF=main        nhánh/commit gốc (dữ liệu Lệnh 1) để kiểm tra hồi quy (mặc định: main)
-  PGTEST_DSN=...       chuỗi kết nối tới một database Postgres 15+ TRỐNG để chạy thật
-                       schema.sql + seed.sql (KHÔNG dùng Supabase thật). Không đặt → SKIP.
-                       Script tạo role anon/authenticated nếu máy test chưa có (giống Supabase).
+  BASE_REF=main        nhánh/commit gốc để so sánh (mặc định: main). Mọi thay đổi so với gốc
+                       phải nằm ở các món vừa chuyển sang tham_khao_online.
+  DOT=bac              đợt đang kiểm (bac | trung | nam). Mặc định: bac. Đọc reports/dot_<DOT>.md.
+  PGTEST_DSN=...       chuỗi kết nối tới một database Postgres 15+ TRỐNG trên máy test (KHÔNG dùng
+                       Supabase thật). Script tạo thêm database <tên>_base để nạp bản gốc và so view.
+                       Không đặt → SKIP các mục cần Postgres.
 
 Script không kết nối Supabase, không đọc hay ghi key nào.
 """
 import csv
+import datetime as dt
 import io
 import json
 import os
 import re
 import subprocess
 import sys
+import tempfile
 from collections import Counter
 from pathlib import Path
 
@@ -29,47 +34,19 @@ sys.path.insert(0, str(HERE))
 import build_from_json  # noqa: E402
 
 REL = "workspace/goals/m-n-ngon-m-i-ng-y-app/files/supabase"
-NUTRI_MODES = {"an_kieng_giam_can", "it_dau_mo", "giau_protein", "it_tinh_bot"}
-VN_SOURCES = {"calocalo_vn_fct", "fao_vn_fct_2017"}
-EXTRA_COOK = {
-    ("thit-heo-luoc-cuon-banh-trang", "hap_luoc"), ("thit-heo-luoc-cuon-banh-trang", "goi_cuon"),
-    ("rau-luoc-kho-quet", "hap_luoc"), ("rau-luoc-kho-quet", "kho"),
-    ("com-tam-suon-bi-cha", "hap_luoc"),
-}
-EXPECTED_ITEMS = [  # (ngày, bữa, cụm tên, slug|None) — đúng Lệnh 2 mục 4.3
-    (1, "sang", "Bánh mì thịt", None),
-    (1, "trua", "cá kho tộ", "ca-kho-to"), (1, "trua", "canh chua", None),
-    (1, "toi", "Bún chả", "bun-cha"),
-    (2, "sang", "Phở gà", "pho-ga"),
-    (2, "trua", "thịt quay", "thit-quay-gion-bi"), (2, "trua", "canh cua rau đay", "canh-cua-rau-day"),
-    (2, "toi", "Mì Quảng tôm thịt", "mi-quang-ga-tom-thit"),
-    (3, "sang", "Bánh cuốn", "banh-cuon-thanh-tri"),
-    (3, "trua", "Cơm tấm sườn bì chả", "com-tam-suon-bi-cha"),
-    (3, "toi", "gà kho gừng", None), (3, "toi", "canh bí", "canh-bi-nau-tom"),
-    (4, "sang", "Hủ tiếu Nam Vang", "hu-tieu-nam-vang"),
-    (4, "trua", "Bún bò Huế", "bun-bo-hue"),
-    (4, "toi", "đậu sốt cà", "dau-phu-sot-ca-chua"), (4, "toi", "trứng đúc thịt", "trung-duc-thit"),
-    (5, "sang", "Xôi xéo", "xoi-xeo"),
-    (5, "trua", "bò lúc lắc", "bo-luc-lac"), (5, "trua", "canh rau", None),
-    (5, "toi", "Bánh xèo", None),
-    (6, "sang", "Phở bò", "pho-bo"),
-    (6, "trua", "Cao lầu", "cao-lau-hoi-an"),
-    (6, "toi", "Lẩu mắm", "lau-mam"),
-    (7, "sang", "Bún thang", "bun-thang"),
-    (7, "trua", "Cơm gà Tam Kỳ", "com-ga-tam-ky"),
-    (7, "toi", "Gỏi cuốn", "goi-cuon"), (7, "toi", "cháo nhẹ", None),
-]
+REGION_OF_DOT = {"bac": "Bac", "trung": "Trung", "nam": "Nam"}
+KB_SOURCE = "Kịch bản 15 trang Món Ngon Mỗi Ngày (nguồn nội bộ)"
 ALL_TABLES = build_from_json.TABLES
+TODAY = dt.date(2026, 11, 23)
 
 failures = 0
 
 
 def check(no, label, ok, detail=""):
     global failures
-    status = "PASS" if ok else "FAIL"
     if not ok:
         failures += 1
-    print(f"[{status}] {no}. {label}" + (f" — {detail}" if detail else ""))
+    print(f"[{'PASS' if ok else 'FAIL'}] {no}. {label}" + (f" — {detail}" if detail else ""))
 
 
 def schema_columns(sql):
@@ -81,224 +58,242 @@ def schema_columns(sql):
     return cols
 
 
+def git_show(ref, name):
+    return subprocess.check_output(["git", "show", f"{ref}:{REL}/{name}"], cwd=BASE, text=True)
+
+
+def key(row):
+    return json.dumps(row, ensure_ascii=False, sort_keys=True)
+
+
 def main():
-    data = build_from_json.load()
-    schema_sql = (BASE / "schema.sql").read_text(encoding="utf-8")
-    seed_path = BASE / "seed.sql"
-    D = data["dishes"]
-    slug_of = {x["id"]: x["slug"] for x in D}
-    id_of = {x["slug"]: x["id"] for x in D}
-    R = data["recipes"]
-
+    dot = os.environ.get("DOT", "bac")
+    region = REGION_OF_DOT[dot]
     base_ref = os.environ.get("BASE_REF", "main")
-    old = json.loads(subprocess.check_output(
-        ["git", "show", f"{base_ref}:{REL}/mon-ngon-supabase-data.json"], cwd=BASE, text=True))
-    old_dishes = {x["slug"]: x for x in old["dishes"]}
+    data = build_from_json.load()
+    old = json.loads(git_show(base_ref, "mon-ngon-supabase-data.json"))
+    schema_sql = (BASE / "schema.sql").read_text(encoding="utf-8")
 
-    # 1
+    D = data["dishes"]
+    by_id = {x["id"]: x for x in D}
+    slug_of = {x["id"]: x["slug"] for x in D}
+    old_d = {x["slug"]: x for x in old["dishes"]}
+    R = data["recipes"]
+    online = [r for r in R if r["recipe_status"] == "tham_khao_online"]
+    new_online_ids = {x["id"] for x in D if x["status"] == "tham_khao_online"
+                      and old_d[x["slug"]]["status"] != "tham_khao_online"}
+    new_online_slugs = sorted(slug_of[i] for i in new_online_ids)
+    old_online = sum(1 for x in old["dishes"] if x["status"] == "tham_khao_online")
+
+    # 1. Đếm món / trạng thái
     reg = Counter(x["region"] for x in D)
-    uniq = len({x["slug"] for x in D}) == len({x["id"] for x in D}) == len({x["name"] for x in D}) == len(D)
-    in90 = sum(1 for r in R if r["in_90"])
-    dbt = sum(1 for x in D if x["status"] == "dang_bien_tap")
-    check(1, "90 món = Bac 30 / Trung 30 / Nam 30; công thức in_90 = 6; tổng recipes = 6; dang_bien_tap = 84",
-          len(D) == 90 and reg == Counter(Bac=30, Trung=30, Nam=30) and uniq and in90 == 6 and len(R) == 6 and dbt == 84,
-          f"tổng={len(D)} miền={dict(reg)} không_trùng={uniq} in_90={in90} recipes={len(R)} dang_bien_tap={dbt}")
+    st = Counter(x["status"] for x in D)
+    st_reg = Counter((x["region"], x["status"]) for x in D)
+    old_st_reg = Counter((x["region"], x["status"]) for x in old["dishes"])
+    other_regions_same = all(st_reg[(g, s)] == old_st_reg[(g, s)] for g in ("Bac", "Trung", "Nam") if g != region
+                             for s in ("co_cong_thuc", "dang_bien_tap", "tham_khao_online"))
+    moved_ok = all(old_d[slug_of[i]]["status"] == "dang_bien_tap" and by_id[i]["region"] == region for i in new_online_ids)
+    n_new = len(new_online_ids)
+    check(1, f"90 món (30/30/30); chỉ món miền {region} đang dang_bien_tap được chuyển sang tham_khao_online; miền khác không đổi",
+          len(D) == 90 and reg == Counter(Bac=30, Trung=30, Nam=30) and st["co_cong_thuc"] == 6
+          and st["tham_khao_online"] == old_online + n_new and other_regions_same and moved_ok,
+          f"trạng_thái={dict(st)} | {region}: " + ", ".join(f"{s}={st_reg[(region, s)]}" for s in ("co_cong_thuc", "tham_khao_online", "dang_bien_tap"))
+          + f" | đợt này chuyển {n_new} món")
 
-    # 2
-    n_lookup = {t: len(data[t]) for t in ["regions", "cooking_methods", "meals", "time_bands", "occasions", "dish_types"]}
-    check(2, "bảng tra cứu: 3 miền, 9 cách nấu, 4 bữa, 3 khoảng thời gian, 1 dịp, 4 loại món",
-          n_lookup == {"regions": 3, "cooking_methods": 9, "meals": 4, "time_bands": 3, "occasions": 1, "dish_types": 4},
-          str(n_lookup))
+    # 2. Bảng không được đổi
+    frozen = ["regions", "cooking_methods", "meals", "time_bands", "occasions", "dish_types", "diet_modes",
+              "nutrition_estimates", "dish_meals", "dish_occasions", "weekly_menu", "weekly_menu_items"]
+    changed = [t for t in frozen if sorted(map(key, data[t])) != sorted(map(key, old[t]))]
+    check(2, "không đổi: bảng tra cứu, diet_modes, nutrition_estimates (không thêm dinh dưỡng), dish_meals, dish_occasions, thực đơn tuần",
+          not changed, f"bảng_bị_đổi={changed} nutrition={len(data['nutrition_estimates'])}")
 
-    # 3
-    dcm = {(slug_of[x["dish_id"]], x["cooking_method_code"]) for x in data["dish_cooking_methods"]}
-    from_l1 = {(s, d["cooking_method"]) for s, d in old_dishes.items() if d["cooking_method"]}
-    meals = {(slug_of[x["dish_id"]], x["meal_code"]) for x in data["dish_meals"]}
-    meals_l1 = {(s, d["meal"]) for s, d in old_dishes.items() if d["meal"]}
-    occ = {(slug_of[x["dish_id"]], x["occasion_code"]) for x in data["dish_occasions"]}
-    mq = [x for x in dcm if x[0] == "mi-quang-ga-tom-thit"]
-    n_dish_cook = len({s for s, _ in dcm})
-    check(3, "dish_cooking_methods 49 dòng / 46 món (= Lệnh 1 + 5 dòng mục 4.2); Mì Quảng 0; dish_meals 27 (= Lệnh 1); dish_occasions 1 (lau-mam)",
-          len(data["dish_cooking_methods"]) == 49 and n_dish_cook == 46 and dcm == from_l1 | EXTRA_COOK and not mq
-          and meals == meals_l1 and len(data["dish_meals"]) == 27 and occ == {("lau-mam", "cuoi_tuan_dai_khach")},
-          f"cách_nấu={len(data['dish_cooking_methods'])}/{n_dish_cook} món, mì_quảng={len(mq)}, bữa={len(data['dish_meals'])}, dịp={sorted(occ)}")
+    # 3. Công thức kịch bản và nguyên liệu của chúng giữ nguyên
+    kb_now = sorted(key(r) for r in R if r["recipe_source"] == KB_SOURCE)
+    kb_old = sorted(key(r) for r in old["recipes"] if r["recipe_source"] == KB_SOURCE)
+    kb_ids = {r["id"] for r in old["recipes"] if r["recipe_source"] == KB_SOURCE}
+    ing_kb_now = sorted(key(i) for i in data["ingredients"] if i["recipe_id"] in kb_ids)
+    ing_kb_old = sorted(key(i) for i in old["ingredients"] if i["recipe_id"] in kb_ids)
+    old_rec_ids = {r["id"] for r in old["recipes"]}
+    old_recs_same = sorted(key(r) for r in R if r["id"] in old_rec_ids) == sorted(key(r) for r in old["recipes"])
+    check(3, "6 công thức kịch bản + nguyên liệu của chúng giữ nguyên từng byte; mọi recipe cũ không đổi",
+          len(kb_now) == 6 and kb_now == kb_old and ing_kb_now == ing_kb_old and old_recs_same,
+          f"kịch_bản={len(kb_now)} nguyên_liệu_kb={len(ing_kb_now)}")
 
-    # 4
-    W = {w["id"]: w for w in data["weekly_menu"]}
-    items = sorted(data["weekly_menu_items"], key=lambda i: (W[i["weekly_menu_id"]]["day_of_week"],
-                   ["sang", "trua", "toi"].index(W[i["weekly_menu_id"]]["meal"]), i["sort_order"]))
-    got = [(W[i["weekly_menu_id"]]["day_of_week"], W[i["weekly_menu_id"]]["meal"], i["item_text"],
-            slug_of.get(i["dish_id"])) for i in items]
-    print("    weekly_menu_items (ngày, bữa, cụm tên → slug):")
-    for g in got:
-        print(f"      T{g[0]} {g[1]:<4} {g[2]!r} → {g[3] or 'NULL'}")
-    bm = [i for i in data["weekly_menu_items"] if i["item_text"] == "Bánh mì thịt"]
-    check(4, "weekly_menu 21 dòng; weekly_menu_items khớp đúng danh sách mục 4.3; 'Bánh mì thịt' dish_id & recipe_id NULL",
-          len(data["weekly_menu"]) == 21 and got == EXPECTED_ITEMS and len(bm) == 1
-          and bm[0]["dish_id"] is None and bm[0]["recipe_id"] is None,
-          f"items={len(got)} nối_món={sum(1 for g in got if g[3])}")
+    # 4. Trường nguồn của công thức online
+    src_codes = {s["code"]: s for s in data["sources"]}
+    bad = []
+    per_dish = Counter(r["dish_id"] for r in online)
+    for r in online:
+        sl = slug_of.get(r["dish_id"], "?")
+        try:
+            dd = dt.date.fromisoformat(r["source_accessed_date"] or "")
+        except ValueError:
+            dd = None
+        first = (r["steps_text"] or "").split("\n", 1)[0]
+        n_ing = [i for i in data["ingredients"] if i["recipe_id"] == r["id"]]
+        problems = [
+            ("in_90", r["in_90"] is not True),
+            ("recipe_source", not r["recipe_source"]),
+            ("source_url", not (r["source_url"] or "").startswith("https://")),
+            ("source_accessed_date", dd is None or dd > TODAY),
+            ("source_code", r["source_code"] not in src_codes or r["source_code"] == "kich_ban_15_trang"),
+            ("dòng_đầu_steps", first != f"Công thức tham khảo từ {r['recipe_source']}, chưa nấu thử."),
+            ("tip", r["tip"] is not None),
+            ("dish_name", r["dish_name"] != by_id[r["dish_id"]]["name"]),
+            ("ingredients", [i["text"] for i in sorted(n_ing, key=lambda i: i["sort_order"])] != (r["ingredients_text"] or "").split("; ")
+             or sorted(i["sort_order"] for i in n_ing) != list(range(1, len(n_ing) + 1))),
+            ("dish_status", by_id[r["dish_id"]]["status"] != "tham_khao_online" or by_id[r["dish_id"]]["has_full_recipe"] is not True),
+            ("1_công_thức/món", per_dish[r["dish_id"]] != 1),
+            ("servings", r["servings"] is not None and r["servings_text"] is None),
+            ("total_minutes", r["total_minutes"] is not None and r["time_text"] is None),
+        ]
+        bad += [(sl, p) for p, cond in problems if cond]
+    online_dishes = {x["id"] for x in D if x["status"] == "tham_khao_online"}
+    check(4, f"{len(online)} công thức online: đủ recipe_source / https source_url / ngày truy cập / source_code; "
+             "dòng đầu 'Công thức tham khảo từ …, chưa nấu thử.'; tip NULL; ingredients khớp từng dòng; 1 công thức/món",
+          not bad and online_dishes == set(per_dish), f"lỗi={bad}")
 
-    # 5
-    dbt_ids = {x["id"] for x in D if x["status"] == "dang_bien_tap"}
-    bad_rec = [r for r in R if r["dish_id"] in dbt_ids]
-    new_vn = [n for n in data["nutrition_estimates"] if n["dish_id"] in dbt_ids and n["basis"] == "per_serving"
-              and n["source_code"] in VN_SOURCES]
-    same_nut = {n["id"] for n in data["nutrition_estimates"]} == {n["id"] for n in old["nutrition_estimates"]}
-    check(5, "món dang_bien_tap không có recipe / total_minutes / dinh dưỡng theo khẩu phần Bảng TPTP VN; "
-             "nutrition_estimates không thêm dòng nào so với Lệnh 1",
-          not bad_rec and not new_vn and same_nut,
-          f"recipe_vi_phạm={len(bad_rec)} dinh_dưỡng_VN_vi_phạm={len(new_vn)} cùng_bộ_id_dinh_dưỡng={same_nut}")
+    # 5. Món dang_bien_tap không có công thức; sources cũ giữ nguyên
+    dbt = {x["id"] for x in D if x["status"] == "dang_bien_tap"}
+    rec_dbt = [slug_of[r["dish_id"]] for r in R if r["dish_id"] in dbt]
+    old_src_same = all(key(s) == key(src_codes.get(s["code"], {})) for s in old["sources"])
+    new_src = sorted(set(src_codes) - {s["code"] for s in old["sources"]})
+    check(5, "món dang_bien_tap không có recipe; các dòng sources cũ không đổi, chỉ thêm nguồn mới",
+          not rec_dbt and old_src_same, f"recipe_ở_dang_bien_tap={rec_dbt} nguồn_mới={new_src}")
 
-    # 6
-    cols6 = ["locality", "difficulty", "image_url", "description", "dish_type"]
-    nonnull = {c: sum(1 for x in D if x[c] is not None) for c in cols6}
-    check(6, "locality, difficulty, image_url, description, dish_type đều NULL ở cả 90 món",
-          all(v == 0 for v in nonnull.values()), str(nonnull))
+    # 6. Cách nấu: chỉ thêm, chỉ cho món vừa chuyển; Mì Quảng vẫn NULL (QĐ3)
+    cm_now = {(x["dish_id"], x["cooking_method_code"]) for x in data["dish_cooking_methods"]}
+    cm_old = {(x["dish_id"], x["cooking_method_code"]) for x in old["dish_cooking_methods"]}
+    added = sorted((slug_of[a], b) for a, b in cm_now - cm_old)
+    mq = [b for a, b in cm_now if slug_of[a] == "mi-quang-ga-tom-thit"]
+    check(6, "dish_cooking_methods: không xóa dòng nào; dòng thêm chỉ thuộc món vừa chuyển; Mì Quảng 0 dòng",
+          cm_old <= cm_now and all(a in new_online_ids for a, _ in cm_now - cm_old) and not mq,
+          f"tổng={len(cm_now)} (gốc {len(cm_old)}) thêm={added}")
 
-    # 7 (phần offline): dish_vegetarian = an_chay của Lệnh 1
-    old_chay = {t["dish_id"]: (t["is_applicable"], t["basis"]) for t in old["dish_diet_tags"]
-                if t["diet_mode_code"] == "an_chay"}
-    veg = {v["dish_id"]: (v["is_vegetarian"], v["basis"]) for v in data["dish_vegetarian"]}
-    check("7a", "dish_vegetarian trùng 90/90 với tag an_chay của Lệnh 1", veg == old_chay and len(veg) == 90,
-          f"dòng={len(veg)} lệch={sum(1 for k in old_chay if veg.get(k) != old_chay[k])}")
+    # 7. dish_vegetarian
+    v_now = {v["dish_id"]: v for v in data["dish_vegetarian"]}
+    v_old = {v["dish_id"]: v for v in old["dish_vegetarian"]}
+    other_same = all(key(v_now[i]) == key(v_old[i]) for i in v_old if i not in new_online_ids)
+    conf = [slug_of[i] for i in new_online_ids if not (v_now[i]["confirmed_by_recipe"] is True
+            and v_now[i]["is_vegetarian"] is not None and v_now[i]["basis"].startswith("Theo công thức tham khảo"))]
+    flipped = sorted(slug_of[i] for i in new_online_ids if v_old[i]["is_vegetarian"] != v_now[i]["is_vegetarian"])
+    check(7, "dish_vegetarian: 90 dòng; món vừa chuyển có confirmed_by_recipe = true và basis dẫn công thức; món khác không đổi",
+          len(v_now) == 90 and other_same and not conf, f"chưa_xác_nhận={conf} đổi_giá_trị={flipped}")
 
-    # 8 + 9a
+    # 8. Cột chưa có nguồn vẫn NULL
+    cols8 = ["locality", "difficulty", "image_url", "description", "dish_type"]
+    nonnull = {c: sum(1 for x in D if x[c] is not None) for c in cols8}
+    check(8, "locality, difficulty, image_url, description, dish_type vẫn NULL ở cả 90 món", all(v == 0 for v in nonnull.values()), str(nonnull))
+
+    # 9. schema.sql không đổi; pglast; key JSON là cột thật
+    schema_same = schema_sql == git_show(base_ref, "schema.sql")
     cols = {}
     try:
         cols = schema_columns(schema_sql)
-        check("9a", "pglast parse schema.sql", True, f"{len(cols)} bảng")
-        bad = sorted({(t, k) for t in ALL_TABLES for r in data[t] for k in r if k not in cols.get(t, [])})
-        missing = [t for t in ALL_TABLES if t not in cols]
-        check(8, "mọi key JSON là cột có thật (lấy cột bằng pglast từ schema.sql)", not bad and not missing,
-              f"sai={bad} bảng_thiếu={missing}")
+        badk = sorted({(t, k) for t in ALL_TABLES for r in data[t] for k in r if k not in cols.get(t, [])})
+        check(9, "schema.sql giống hệt bản gốc; pglast parse được; mọi key JSON là cột có thật",
+              schema_same and not badk, f"schema_giống={schema_same} bảng={len(cols)} key_sai={badk}")
     except Exception as e:  # noqa: BLE001
-        check("9a", "pglast parse schema.sql", False, repr(e))
-
-    # 9b
+        check(9, "schema.sql giống hệt bản gốc; pglast parse được", False, repr(e))
     try:
-        n = len(pglast.parse_sql(seed_path.read_text(encoding="utf-8")))
+        n = len(pglast.parse_sql((BASE / "seed.sql").read_text(encoding="utf-8")))
         check("9b", "pglast parse seed.sql", True, f"{n} câu lệnh")
     except Exception as e:  # noqa: BLE001
         check("9b", "pglast parse seed.sql", False, repr(e))
 
-    # 10
+    # 10. File sinh ra khớp JSON
     gen = build_from_json.generate(data)
     same = {f: (BASE / f).exists() and (BASE / f).read_text(encoding="utf-8") == c for f, c in gen.items()}
     n_d = len(list(csv.reader(io.StringIO(gen["dishes.csv"])))) - 1
     nut = list(csv.DictReader(io.StringIO(gen["nutrition.csv"])))
-    nb = Counter(r["basis"] for r in nut)
-    check(10, "seed.sql / dishes.csv / nutrition.csv giống byte-by-byte bản sinh từ JSON; dishes.csv 90; nutrition.csv 21 (8 + 13)",
-          all(same.values()) and n_d == 90 and len(nut) == 21 and nb == Counter(per_100g=8, per_serving=13),
-          f"giống={same} dishes.csv={n_d} nutrition.csv={len(nut)} {dict(nb)}")
+    check(10, "seed.sql / dishes.csv / nutrition.csv giống byte-by-byte bản sinh từ JSON; dishes.csv 90; nutrition.csv 21",
+          all(same.values()) and n_d == 90 and len(nut) == 21, f"giống={same} dishes.csv={n_d} nutrition.csv={len(nut)}")
 
-    # 12
-    rc = cols.get("recipes", [])
-    need = {"recipe_source", "source_url", "source_accessed_date", "recipe_status"}
-    kb = [r for r in R if r["recipe_source"] == "Kịch bản 15 trang Món Ngon Mỗi Ngày (nguồn nội bộ)"
-          and r["recipe_status"] is None and r["source_url"] is None and r["source_accessed_date"] is None]
-    online = sum(1 for r in R if r["recipe_status"] == "tham_khao_online")
-    tm = {slug_of[r["dish_id"]]: r["total_minutes"] for r in R}
-    check(12, "recipes có 4 cột nguồn; 6 công thức kịch bản: recipe_status NULL, recipe_source = kịch bản nội bộ; tham_khao_online = 0",
-          need <= set(rc) and len(kb) == 6 and online == 0, f"cột_đủ={need <= set(rc)} kịch_bản={len(kb)} online={online} total_minutes={tm}")
+    # 12. Báo cáo đợt liệt kê đủ món của miền
+    rep = BASE / "reports" / f"dot_{dot}.md"
+    region_pending_old = sorted(s for s, x in old_d.items() if x["region"] == region and x["status"] == "dang_bien_tap")
+    txt = rep.read_text(encoding="utf-8") if rep.exists() else ""
+    missing = [s for s in region_pending_old if f"`{s}`" not in txt]
+    urls_missing = [r["source_url"] for r in online if by_id[r["dish_id"]]["region"] == region and r["source_url"] not in txt]
+    check(12, f"reports/dot_{dot}.md có đủ {len(region_pending_old)} món miền {region} đang dang_bien_tap ở bản gốc và đủ URL nguồn",
+          rep.exists() and not missing and not urls_missing, f"thiếu_món={missing} thiếu_url={urls_missing}")
 
-    # 13
-    st = Counter(x["status"] for x in D)
-    check(13, "dishes.status: co_cong_thuc 6, dang_bien_tap 84, tham_khao_online 0",
-          st.get("co_cong_thuc") == 6 and st.get("dang_bien_tap") == 84 and st.get("tham_khao_online", 0) == 0,
-          str(dict(st)))
+    # 13. dish_time_band kỳ vọng (tính từ JSON)
+    tb = data["time_bands"]
+    exp_tb = {}
+    for r in R:
+        if r["dish_id"] and r["total_minutes"] is not None:
+            for b in tb:
+                if r["total_minutes"] >= b["min_minutes"] and (b["max_minutes"] is None or r["total_minutes"] <= b["max_minutes"]):
+                    exp_tb[slug_of[r["dish_id"]]] = b["code"]
+    exp_tb_s = " ".join(f"{s}={c}" for s, c in sorted(exp_tb.items()))
 
-    # 11 + 7b (Postgres thật)
+    # 11. Postgres thật
     dsn = os.environ.get("PGTEST_DSN")
     if not dsn:
-        print("[SKIP] 7b. SKIP: không có Postgres (so view dish_diet_eval với Lệnh 1 cần Postgres)")
         print("[SKIP] 11. SKIP: không có Postgres")
     else:
-        def psql(sql=None, f=None):
-            args = ["psql", dsn, "-v", "ON_ERROR_STOP=1", "-q", "-At", "-F", "\t"]
+        def psql(sql=None, f=None, conn=dsn):
+            args = ["psql", conn, "-v", "ON_ERROR_STOP=1", "-q", "-At", "-F", "\t"]
             args += ["-f", str(f)] if f else ["-c", sql]
             return subprocess.run(args, text=True, capture_output=True)
 
+        m = re.search(r"dbname=(\S+)", dsn)
+        base_db = (m.group(1) if m else "postgres") + "_base"
+        base_dsn = re.sub(r"dbname=\S+", f"dbname={base_db}", dsn)
         psql("do $$begin if not exists (select 1 from pg_roles where rolname='anon') then create role anon nologin; end if;"
              " if not exists (select 1 from pg_roles where rolname='authenticated') then create role authenticated nologin; end if; end$$")
-        runs = [psql(f=BASE / "schema.sql"), psql(f=seed_path), psql(f=BASE / "schema.sql"), psql(f=seed_path)]
-        ok_run = all(r.returncode == 0 for r in runs)
-        errs = " | ".join(r.stderr.strip() for r in runs if r.returncode != 0)
+        psql(f"drop database if exists {base_db}")
+        psql(f"create database {base_db}")
+        with tempfile.TemporaryDirectory() as td:
+            bs, bd = Path(td) / "schema.sql", Path(td) / "seed.sql"
+            bs.write_text(git_show(base_ref, "schema.sql"), encoding="utf-8")
+            bd.write_text(git_show(base_ref, "seed.sql"), encoding="utf-8")
+            base_runs = [psql(f=bs, conn=base_dsn), psql(f=bd, conn=base_dsn)]
+        runs = [psql(f=BASE / "schema.sql"), psql(f=BASE / "seed.sql"), psql(f=BASE / "schema.sql"), psql(f=BASE / "seed.sql")]
+        ok_run = all(r.returncode == 0 for r in runs + base_runs)
+        errs = " | ".join(r.stderr.strip() for r in runs + base_runs if r.returncode != 0)
 
-        # 7b hồi quy: view vs dish_diet_tags của Lệnh 1
-        out = psql("select dish_id, diet_mode_code, coalesce(is_applicable::text,'null'), status, coalesce(basis,'') from dish_diet_eval")
-        view = {}
-        for line in out.stdout.strip().splitlines():
-            a, b, c, d, e = line.split("\t")
-            view[(a, b)] = ({"true": True, "false": False, "null": None}[c], d, e)
-        old_tags = {(t["dish_id"], t["diet_mode_code"]): (t["is_applicable"], t["status"], t["basis"]) for t in old["dish_diet_tags"]}
-        diff = [k for k in old_tags if view.get(k) != old_tags[k]]
-        nutri_nonnull = sum(1 for (dd, m), v in view.items() if m in NUTRI_MODES and v[0] is not None)
-        check("7b", "dish_diet_eval trùng 540/540 với dish_diet_tags của Lệnh 1 (is_applicable, status, basis); 4 chế độ dinh dưỡng khác NULL = 0",
-              len(view) == 540 and len(old_tags) == 540 and not diff and nutri_nonnull == 0,
-              f"view={len(view)} lệnh1={len(old_tags)} lệch={len(diff)} dinh_dưỡng_khác_null={nutri_nonnull}")
+        q_view = ("select d.slug, e.diet_mode_code, coalesce(e.is_applicable::text,'null'), e.status, coalesce(e.basis,'') "
+                  "from dish_diet_eval e join dishes d on d.id = e.dish_id")
+        def view(conn):
+            out = psql(q_view, conn=conn).stdout.strip().splitlines()
+            return {(l.split("\t")[0], l.split("\t")[1]): tuple(l.split("\t")[2:]) for l in out}
+        v_now_db, v_base_db = view(dsn), view(base_dsn)
+        diff = sorted(k for k in v_base_db if v_now_db.get(k) != v_base_db[k])
+        diff_outside = [k for k in diff if k[0] not in new_online_slugs]
+        print("    dish_diet_eval khác bản gốc (slug, chế độ: gốc → mới):")
+        for k in diff:
+            print(f"      {k[0]} {k[1]}: {v_base_db[k][0]} → {v_now_db[k][0]}")
 
         res = {}
-        res["f_unaccent('Phở bò Đà Nẵng')"] = psql("select public.f_unaccent(lower('Phở bò Đà Nẵng'))").stdout.strip()
-        res["search_dishes('pho bo')"] = psql("select string_agg(slug, ',') || ' (' || count(*) || ')' from public.search_dishes('pho bo')").stdout.strip()
+        res["search_dishes('pho ga')"] = psql("select string_agg(slug, ',') from public.search_dishes('pho ga')").stdout.strip()
         res["dish_time_band"] = psql("select string_agg(d.slug||'='||t.time_band_code, ' ' order by d.slug) from dish_time_band t join dishes d on d.id=t.dish_id").stdout.strip()
-        old_tb = " ".join(f"{s}={d['time_band']}" for s, d in sorted(old_dishes.items()) if d["time_band"])
         res["bảng có RLS / có policy đọc cho anon,authenticated"] = psql(
             "select count(*) filter (where c.relrowsecurity) || ' / ' || count(*) filter (where exists ("
             "select 1 from pg_policies p where p.schemaname='public' and p.tablename=c.relname and p.cmd='SELECT' "
             "and p.roles @> array['anon','authenticated']::name[])) || ' trên ' || count(*) "
             "from pg_class c join pg_namespace n on n.oid=c.relnamespace where n.nspname='public' and c.relkind='r'").stdout.strip()
         res["policy ghi (khác SELECT)"] = psql("select count(*) from pg_policies where schemaname='public' and cmd <> 'SELECT'").stdout.strip()
-        res["hàm public có search_path=''"] = psql(
-            "select string_agg(p.proname || '=' || coalesce(array_to_string(p.proconfig, ','), 'KHÔNG'), ' ' order by p.proname) "
-            "from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname='public'").stdout.strip()
         res["số đếm"] = psql(
-            "select (select count(*) from dishes)||' món, '||(select count(*) from recipes)||' công thức, '||"
+            "select (select count(*) from dishes)||' món, '||(select count(*) from recipes)||' công thức ('||"
+            "(select count(*) from recipes where recipe_status='tham_khao_online')||' online), '||"
             "(select count(*) from ingredients)||' nguyên liệu, '||(select count(*) from nutrition_estimates)||' dinh dưỡng, '||"
-            "(select count(*) from dish_cooking_methods)||' cách nấu, '||(select count(*) from dish_meals)||' bữa, '||"
-            "(select count(*) from weekly_menu_items)||' món trong thực đơn tuần'").stdout.strip()
-
-        # View tính đúng khi có số liệu: DỮ LIỆU GIẢ chỉ trong giao dịch test, ROLLBACK, không lưu.
-        fx = psql(
-            "begin;"
-            f"insert into nutrition_estimates (dish_id, source_item_name, basis, kcal, protein_g, carb_g, fat_g, source_code, method, confidence) values "
-            f"('{id_of['pho-bo']}', 'TEST', 'per_serving', 400, 30, 50, 8, 'fao_vn_fct_2017', 'TEST', 'trung_binh_uoc_tinh'),"
-            f"('{id_of['rau-muong-xao-toi']}', 'TEST', 'per_serving', 140, 5, 10, 8, 'fao_vn_fct_2017', 'TEST', 'trung_binh_uoc_tinh'),"
-            f"('{id_of['mi-quang-ga-tom-thit']}', 'TEST', 'per_serving', 600, 40, 60, 8, 'fao_vn_fct_2017', 'TEST', 'trung_binh_uoc_tinh');"
-            "select d.slug || ':' || e.diet_mode_code || '=' || coalesce(e.is_applicable::text, 'null') from dish_diet_eval e "
-            "join dishes d on d.id = e.dish_id where d.slug in ('pho-bo','rau-muong-xao-toi','mi-quang-ga-tom-thit') "
-            "and e.diet_mode_code in ('an_kieng_giam_can','it_dau_mo','giau_protein','it_tinh_bot') order by 1;"
-            "rollback;")
-        got_fx = set(fx.stdout.split())
-        exp_fx = {
-            "pho-bo:an_kieng_giam_can=true", "pho-bo:it_dau_mo=true", "pho-bo:giau_protein=true", "pho-bo:it_tinh_bot=false",
-            "rau-muong-xao-toi:it_dau_mo=false",
-            "mi-quang-ga-tom-thit:it_dau_mo=null",
-        }
-        after = psql("select count(*) from nutrition_estimates").stdout.strip()
-        res["test view với dữ liệu giả (rollback)"] = ("đúng" if exp_fx <= got_fx else f"SAI: {sorted(got_fx)}") + f"; sau rollback còn {after} dòng dinh dưỡng"
-
-        # Chạy toàn bộ khối SQL trong README
+            "(select count(*) from dish_cooking_methods)||' cách nấu, '||(select count(*) from sources)||' nguồn'").stdout.strip()
+        res["trạng thái món"] = psql("select string_agg(status||'='||n, ' ' order by status) from (select status, count(*) n from dishes group by 1) s").stdout.strip()
         blocks = re.findall(r"```sql\n(.*?)```", (BASE / "README.md").read_text(encoding="utf-8"), re.S)
-        bad_blocks = []
-        for i, b in enumerate(blocks):
-            r = psql(b)
-            if r.returncode != 0:
-                bad_blocks.append((i, r.stderr.strip()[:200]))
+        bad_blocks = [(i, r.stderr.strip()[:200]) for i, b in enumerate(blocks) if (r := psql(b)).returncode != 0]
         res["khối SQL trong README chạy được"] = f"{len(blocks) - len(bad_blocks)}/{len(blocks)}" + (f" lỗi={bad_blocks}" if bad_blocks else "")
-
         for k, v in res.items():
             print(f"      {k}: {v}")
-        rls = res["bảng có RLS / có policy đọc cho anon,authenticated"]
-        funcs_ok = "KHÔNG" not in res["hàm public có search_path=''"]
-        ok11 = (ok_run and res["f_unaccent('Phở bò Đà Nẵng')"] == "pho bo da nang"
-                and res["search_dishes('pho bo')"].startswith("pho-bo")
-                and res["dish_time_band"] == old_tb
-                and rls == "18 / 18 trên 18" and res["policy ghi (khác SELECT)"] == "0" and funcs_ok
-                and res["test view với dữ liệu giả (rollback)"].startswith("đúng") and after == "21"
-                and not bad_blocks)
-        check(11, "Postgres thật: schema + seed chạy 2 lần không lỗi; f_unaccent; search_dishes; dish_time_band = time_band Lệnh 1; "
-                  "RLS + policy đọc cả 18 bảng, 0 policy ghi; mọi hàm search_path=''; view tính đúng; README chạy được",
-              ok11, errs)
+        psql(f"drop database if exists {base_db}")
+        ok11 = (ok_run and "pho-ga" in res["search_dishes('pho ga')"] and res["dish_time_band"] == exp_tb_s
+                and res["bảng có RLS / có policy đọc cho anon,authenticated"] == "18 / 18 trên 18"
+                and res["policy ghi (khác SELECT)"] == "0" and not bad_blocks and not diff_outside
+                and len(v_now_db) == 540)
+        check(11, "Postgres thật: bản gốc + bản mới chạy schema/seed không lỗi (bản mới chạy 2 lần); dish_time_band đúng kỳ vọng; "
+                  "RLS 18/18, 0 policy ghi; README chạy được; dish_diet_eval chỉ khác bản gốc ở món vừa chuyển",
+              ok11, f"view_khác={len(diff)} khác_ngoài_đợt={diff_outside} {errs}")
 
     print()
     print("KẾT QUẢ:", "TẤT CẢ PASS" if failures == 0 else f"{failures} FAIL")
