@@ -12,6 +12,9 @@
 --   chế độ ăn: binh_thuong, an_chay, an_kieng_giam_can, it_dau_mo, giau_protein, it_tinh_bot
 --   thời gian: duoi_30, 30_60, tren_60 (chỉ khi có công thức đầy đủ)
 --   dịp: cuoi_tuan_dai_khach (chỉ Lẩu mắm, theo thực đơn 7 ngày mẫu)
+-- Lệnh 1 (2026-11-23): nguồn dinh dưỡng chuẩn duy nhất là Bảng Thành phần Thực phẩm
+--   Việt Nam (QĐ1=B); FitArchive chỉ tham khảo. Không còn công thức nào ngoài 90 món.
+--   Thêm recipe_id (nullable) cho nutrition_estimates và weekly_menu; check region/in_90 cho recipes.
 
 create extension if not exists "pgcrypto";
 
@@ -49,7 +52,7 @@ create table if not exists recipes (
   id uuid primary key default gen_random_uuid(),
   dish_id uuid references dishes (id),
   dish_name text not null,
-  region text not null,
+  region text not null check (region in ('Bac', 'Trung', 'Nam') or region is null),
   in_90 boolean not null default true,
   servings_text text,
   time_text text,
@@ -58,7 +61,8 @@ create table if not exists recipes (
   tip text,
   source_code text not null default 'kich_ban_15_trang' references sources (code),
   created_at timestamptz not null default now(),
-  constraint uq_recipes_dish unique (dish_id)
+  constraint uq_recipes_dish unique (dish_id),
+  constraint ck_recipes_in_90 check (in_90 = (dish_id is not null))
 );
 create index if not exists idx_recipes_dish on recipes (dish_id);
 
@@ -75,6 +79,7 @@ create index if not exists idx_ingredients_recipe on ingredients (recipe_id);
 create table if not exists nutrition_estimates (
   id uuid primary key default gen_random_uuid(),
   dish_id uuid references dishes (id),
+  recipe_id uuid references recipes (id),
   dish_name text not null,
   basis text not null check (basis in ('per_100g', 'per_serving')),
   serving_g numeric,
@@ -122,6 +127,7 @@ create table if not exists weekly_menu (
   meal text not null check (meal in ('sang', 'trua', 'toi')),
   meal_text text not null,
   dish_id uuid references dishes (id),
+  recipe_id uuid references recipes (id),
   note text,
   created_at timestamptz not null default now(),
   constraint uq_weekly_day_meal unique (day_of_week, meal)

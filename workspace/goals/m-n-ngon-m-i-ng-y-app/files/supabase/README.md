@@ -11,10 +11,12 @@ Thư mục: `workspace/goals/m-n-ngon-m-i-ng-y-app/files/supabase/`
 | File | Nội dung |
 |---|---|
 | `schema.sql` | Schema Postgres/Supabase: `dishes`, `recipes`, `ingredients`, `nutrition_estimates`, `diet_modes`, `dish_diet_tags`, `weekly_menu`, `sources`. UUID, slug, `numeric` cho kcal/protein/carb/fat, index trên miền/slug/chế độ ăn, RLS đọc công khai — không ghi công khai. Kèm 2 hàm `protein_target_grams()` và `protein_remaining_grams()`. |
-| `seed.sql` | INSERT cho toàn bộ dữ liệu dưới đây. Chạy sau `schema.sql`. Dùng `ON CONFLICT DO NOTHING` nên chạy lại được. |
-| `dishes.csv` | 90 món, cùng dữ liệu với `seed.sql`, UTF-8, để import CSV trong Supabase. |
-| `nutrition.csv` | 22 dòng dinh dưỡng, cùng dữ liệu với `seed.sql`, UTF-8. |
-| `mon-ngon-supabase-data.json` | Bản JSON mirror của `seed.sql` (món, công thức, nguyên liệu, dinh dưỡng, chế độ ăn, thực đơn tuần, nguồn). |
+| `mon-ngon-supabase-data.json` | **Nguồn gốc duy nhất** của dữ liệu (món, công thức, nguyên liệu, dinh dưỡng, chế độ ăn, thực đơn tuần, nguồn). Tên trường trùng đúng tên cột DB. |
+| `seed.sql` | INSERT cho toàn bộ dữ liệu. **Sinh tự động từ JSON**, không sửa tay. Chạy sau `schema.sql`. Dùng `ON CONFLICT DO NOTHING` nên chạy lại được. |
+| `dishes.csv` | 90 món, sinh tự động từ JSON, UTF-8, để import CSV trong Supabase. |
+| `nutrition.csv` | 21 dòng dinh dưỡng, sinh tự động từ JSON, UTF-8. |
+| `scripts/build_from_json.py` | Sinh lại `seed.sql`, `dishes.csv`, `nutrition.csv` từ JSON: `python scripts/build_from_json.py`. |
+| `scripts/check_data.py` | Kiểm chứng toàn bộ gói (PASS/FAIL): `python scripts/check_data.py`. Cần `pip install pglast`. Đặt `PGTEST_DSN` tới một database Postgres trống để chạy thật schema + seed. |
 | `README.md` | File này. |
 | Nguồn chuẩn (không sửa) | `../mon-ngon-90-mon-data.json` — 90 món đã đếm đủ Bắc 30 / Trung 30 / Nam 30. |
 
@@ -22,12 +24,12 @@ Thư mục: `workspace/goals/m-n-ngon-m-i-ng-y-app/files/supabase/`
 
 - **Món: 90** — Bắc 30 / Trung 30 / Nam 30. Không có Tây Nguyên, không có món toàn quốc, không có Biển & Đảo trong 90 món.
 - **Công thức đầy đủ trong 90: 6 món** — Phở bò, Bún chả, Bún bò Huế, Mì Quảng, Hủ tiếu Nam Vang, Cơm tấm sườn bì chả.
-- **Công thức đầy đủ ngoài 90: 1 món** — Bánh mì thịt nguội, món toàn quốc, không nằm trong 90. Tổng công thức đầy đủ trong seed: **7**.
-- **Nguyên liệu đã tách dòng: 56 dòng** — tách từ chuỗi nguyên liệu trong kịch bản bằng dấu `;`, không thêm/bớt nguyên liệu.
-- **Dinh dưỡng: 22 dòng** — 8 dòng theo 100 g + 14 dòng theo khẩu phần (xem mục 2).
-- **Chế độ ăn: 6 chế độ**, **540 tag món × chế độ** (90 × 6). Trong đó **72 tag đã xác định** (12 món có số liệu theo khẩu phần × 6 chế độ), **468 tag chưa có dữ liệu** (78 món × 6) — xem mục 4.
+- **Không có công thức nào ngoài 90 món.** Tổng công thức trong seed: **6**.
+- **Nguyên liệu đã tách dòng: 50 dòng** — tách từ chuỗi nguyên liệu trong kịch bản bằng dấu `;`, không thêm/bớt nguyên liệu (chỉ bỏ dấu chấm cuối câu ở dòng cuối mỗi công thức).
+- **Dinh dưỡng: 21 dòng** — 8 dòng theo 100 g (Bảng TPTP VN qua CaloCalo) + 13 dòng theo khẩu phần (FitArchive, **chỉ tham khảo**) — xem mục 2.
+- **Chế độ ăn: 6 chế độ**, **540 tag món × chế độ** (90 × 6). Trong đó **149 tag đã xác định** (90 `binh_thuong` + 59 `an_chay` = false), **391 tag chưa có dữ liệu** — xem mục 4.
 - **Thực đơn tuần mẫu: 21 bữa** — 7 ngày × 3 bữa (Thứ 2–Chủ nhật, theo kịch bản trang 13).
-- **Cách nấu đã gán: 37/90 món. Bữa đã gán: 24/90 món. Thời gian đã gán: 6/90 món** (chỉ 6 món có công thức đầy đủ). Còn lại để `null` — xem mục 3.
+- **Cách nấu đã gán: 44/90 món. Bữa đã gán: 27/90 món. Thời gian đã gán: 6/90 món** (chỉ 6 món có công thức đầy đủ). Còn lại để `null` — xem mục 3.
 
 ## 2. Nguồn số liệu — chỉ dùng những nguồn này
 
@@ -36,6 +38,8 @@ Thư mục: `workspace/goals/m-n-ngon-m-i-ng-y-app/files/supabase/`
 Kịch bản 15 trang Món Ngon Mỗi Ngày: danh mục 90 món (trang 8), 7 công thức mẫu (trang 9–12), thực đơn 7 ngày (trang 13), bản đồ tính năng (trang 6), lộ trình (trang 14–15).
 
 ### 2.2. Dinh dưỡng theo 100 g — Bảng Thành phần Thực phẩm Việt Nam, Viện Dinh dưỡng Quốc gia (Bộ Y tế), qua CaloCalo
+
+> **QĐ1 = B (chốt 2026-11-23):** Bảng Thành phần Thực phẩm Việt Nam là **nguồn dinh dưỡng chuẩn duy nhất** để tính tag chế độ ăn và để hiển thị. 8 dòng dưới đây đang lấy qua CaloCalo, chưa đối chiếu với bản gốc FAO 2017 — cần đối chiếu (mã thực phẩm, số trang) trước khi web hiển thị.
 
 - Nguồn gốc bảng: Vietnamese Food Composition Table, National Institute of Nutrition (Ministry of Health, Vietnam) — https://www.fao.org/food-composition/tables-and-databases/detail/%28viet-nam--2017%29-vietnamese-food-composition-table/en
 - Tra cứu qua CaloCalo: https://calocalo.app/blog/vietnamese-food-calories/
@@ -52,9 +56,11 @@ Kịch bản 15 trang Món Ngon Mỗi Ngày: danh mục 90 món (trang 8), 7 cô
 | Phở cuốn | 138 | 6,9 g | 17,5 g | 4,5 g |
 | Bánh mì thập cẩm | 296 | 13,4 g | 21,0 g | 17,7 g |
 
-Lưu ý: “Bánh cuốn” trong bảng được gán cho món “Bánh cuốn Thanh Trì” trong kho. “Bánh mì thập cẩm” **chỉ tham chiếu** — không phải Bánh mì thịt nguội trong kịch bản, không gán cho món đó.
+Lưu ý: “Bánh cuốn” trong bảng được gán cho món “Bánh cuốn Thanh Trì” trong kho. “Bánh mì thập cẩm” **chỉ tham chiếu**, không gán cho món nào (`dish_id = NULL`).
 
-### 2.3. Dinh dưỡng theo khẩu phần — FitArchive, ước tính từ USDA FoodData Central
+### 2.3. Dinh dưỡng theo khẩu phần — FitArchive, ước tính từ USDA FoodData Central (CHỈ THAM KHẢO)
+
+> **QĐ1 = B:** các dòng FitArchive **chỉ để tham khảo**. Không dùng để tính tag chế độ ăn, không dùng để hiển thị trên web/app. Vì vậy 4 tag dinh dưỡng (`an_kieng_giam_can`, `it_dau_mo`, `giau_protein`, `it_tinh_bot`) hiện đều là `NULL` — chờ cân khẩu phần và tính theo Bảng TPTP VN.
 
 - Nguồn: FitArchive — https://www.fitarchive.app/food-sources/ — “Recipes and adapted portions are FitArchive estimates”.
 - Gốc nguyên liệu: USDA FoodData Central (fdc.nal.usda.gov, dữ liệu công cộng CC0).
@@ -68,7 +74,6 @@ Lưu ý: “Bánh cuốn” trong bảng được gán cho món “Bánh cuốn 
 | Mì Quảng gà | 1 tô 532 g | 622 | 41 g | 63 g | 22 g |
 | Hủ tiếu Nam Vang | 1 tô 775 g | 542 | 36 g | 67 g | 13 g |
 | Cơm tấm sườn | 1 đĩa 395 g | 626 | 36 g | 70 g | 21 g |
-| Bánh mì thịt | 1 ổ 210 g | 526 | 25 g | 50 g | 25 g |
 | Gỏi cuốn | 1 cuốn 98 g | 147 | 9 g | 21 g | 3 g |
 | Cá kho tộ | 1 phần 160 g | 337 | 24 g | 10 g | 22 g |
 | Rau muống xào tỏi | 1 đĩa 220 g | 139 | 5 g | 10 g | 10 g |
@@ -80,7 +85,6 @@ Lưu ý: “Bánh cuốn” trong bảng được gán cho món “Bánh cuốn 
 Lưu ý gán món, ghi trong cột `note` của từng dòng:
 - “Mì Quảng gà” (FitArchive) ↔ công thức trong kịch bản là “Mì Quảng gà/tôm thịt”.
 - “Cơm tấm sườn” (FitArchive, chỉ sườn) ↔ công thức trong kịch bản là “Cơm tấm sườn bì chả”.
-- “Bánh mì thịt” gán cho công thức Bánh mì thịt nguội (ngoài 90), không gán cho món nào trong 90.
 - “Canh chua cá” là món chung, **không gán cho một món cụ thể**: kịch bản có Canh chua cá lóc (Nam) và Canh chua cá dìa (Trung), không có món tên đúng “Canh chua cá”. Dòng này có `dish_id = NULL` trong DB, dùng làm ví dụ tham khảo, không dùng để lọc món.
 
 ### 2.4. Hướng dẫn chế độ ăn — chỉ dùng cho quy tắc lọc, không phải tư vấn y tế
@@ -98,7 +102,7 @@ Lưu ý gán món, ghi trong cột `note` của từng dòng:
 
 | Trục lọc | Ảnh demo cũ (SAI) | Filter đúng trong DB này | Sửa thế nào |
 |---|---|---|---|
-| **Miền** | Tất cả, Miền Bắc, Miền Trung, Miền Nam, **Tây Nguyên, Khắp cả nước, Biển & Đảo** | Tất cả, Miền Bắc, Miền Trung, Miền Nam | **Xóa Tây Nguyên, Khắp cả nước, Biển & Đảo khỏi enum miền.** Kịch bản chỉ có 3 miền. Bánh mì thịt nguội là món toàn quốc nhưng nằm ngoài 90, ghi chú riêng trong bảng `recipes` (`region = 'Toàn quốc'`, `in_90 = false`), **không tạo miền thứ 4**. |
+| **Miền** | Tất cả, Miền Bắc, Miền Trung, Miền Nam, **Tây Nguyên, Khắp cả nước, Biển & Đảo** | Tất cả, Miền Bắc, Miền Trung, Miền Nam | **Xóa Tây Nguyên, Khắp cả nước, Biển & Đảo khỏi enum miền.** Kịch bản chỉ có 3 miền, **không tạo miền thứ 4**. `recipes.region` cũng chỉ nhận `Bac` / `Trung` / `Nam`. |
 | **Cách nấu** | Tất cả, Món nước, Kho, Canh, Nướng, Chiên / Rán, Gỏi & Cuốn, Lẩu, Hấp & Luộc, Xào, **Nhanh < 30 phút** | Tất cả, Món nước, Kho, Canh, Nướng, Chiên / Rán, Gỏi & Cuốn, Lẩu, Hấp & Luộc, Xào | **Bỏ “Nhanh < 30 phút” khỏi cách nấu** — đó là thời gian, không phải cách nấu. Chuyển sang filter riêng **THỜI GIAN** (mục 3.2). |
 | **Bữa** | Tất cả, Ăn sáng, Bữa trưa, Bữa tối, **Cuối tuần** | Tất cả, Ăn sáng, Bữa trưa, Bữa tối, Ăn nhẹ | **Bỏ “Cuối tuần”** — cuối tuần không phải bữa. Chuyển sang tag dịp `cuoi_tuan_dai_khach` (mục 3.3). |
 | **Chế độ ăn** | *(chưa có hàng này trong ảnh cũ)* | Tất cả, Bình thường, Ăn chay, Ăn kiêng giảm cân, Ít dầu mỡ, Giàu protein, Ít tinh bột | **Thêm hàng mới — filter thứ 4**, lọc kết hợp với 3 filter trên. |
@@ -115,15 +119,26 @@ Enum trong DB (`schema.sql`, cột `dishes.cooking_method`, `dishes.meal`, `dish
 
 ### 3.2. Quy tắc gán — chỉ gán khi có căn cứ, còn lại để `null`
 
-- **Cách nấu:** chỉ gán khi suy ra chắc chắn từ tên món hoặc công thức đầy đủ trong kịch bản. Ví dụ: tên có “kho” → `kho`; “Canh …” → `canh`; “Lẩu …” → `lau`; “xào” → `xao`; “luộc” → `hap_luoc`; “nướng” → `nuong`; “rán” → `chien_ran`; món nước dùng rõ ràng (Phở, Bún bò Huế, Hủ tiếu…) → `mon_nuoc`; Bún chả có công thức ghi “nướng than” → `nuong`. Món chưa có công thức thì `cooking_method = NULL` — sau khi nấu thử mới điền đủ. Đã gán: **37/90 món**.
-- **Bữa:** chỉ gán khi có căn cứ trong thực đơn 7 ngày mẫu (trang 13) hoặc món là món tráng miệng/ăn nhẹ rõ ràng (chè, bánh da lợn, dừa sáp, bánh trôi tàu → `an_nhe`). Đã gán: **24/90 món**. Còn lại `meal = NULL`.
-- **Thời gian:** chỉ điền khi có công thức đầy đủ. 6 món trong 90: Phở bò `tren_60` (~3 giờ hầm, bản rút gọn 60 phút), Bún chả `30_60` (~60 phút), Bún bò Huế `tren_60` (~90 phút), Mì Quảng `30_60` (~60 phút), Hủ tiếu Nam Vang `tren_60` (~90 phút), Cơm tấm `tren_60` (~75 phút). Bánh mì thịt nguội (ngoài 90) là `duoi_30` (~20 phút) nhưng chỉ lưu trong bảng `recipes`, không có trong bảng `dishes`. 84 món còn lại `time_band = NULL`.
+- **Cách nấu — quy tắc thống nhất (khớp theo từ trọn trong tên món):**
+  - `kho` → `kho`; `xào` → `xao`; `luộc` → `hap_luoc`; `nướng` → `nuong`; `rán`, `chiên`, `xối mỡ` → `chien_ran`.
+  - Tên bắt đầu “Canh ” → `canh`; bắt đầu “Lẩu ” → `lau`.
+  - Bắt đầu “Gỏi ”/“Nộm ”, có từ “trộn”, có “cuốn bánh tráng”, hoặc Phở cuốn → `goi_cuon`.
+  - Bắt đầu Phở (trừ Phở cuốn), Hủ tiếu, Miến, Bún (trừ Bún chả, Bún đậu mắm tôm, Bún thịt nướng) → `mon_nuoc`.
+  - Tên khớp 2 cách nấu khác nhau → `NULL` (cột hiện chỉ nhận 1 giá trị; sẽ gán nhiều giá trị khi chuyển sang bảng nối). Hiện có: Thịt heo luộc cuốn bánh tráng (luộc + cuốn), Rau luộc kho quẹt (luộc + kho).
+  - Công thức đầy đủ ghi rõ bước chính: Bún chả → `nuong` (“nướng than”), Cơm tấm → `nuong` (“Nướng sườn”).
+  - Mì Quảng: **tạm thời giữ `NULL`** (QĐ3, công thức vừa xào vừa chan nước nhưn; chưa chốt).
+  - Đã gán: **44/90 món**. Các món khác để `NULL` cho tới khi có công thức.
+- **Bữa — quy tắc thống nhất:**
+  - (a) Cụm tên món trong thực đơn 7 ngày (trang 13, kể cả trong dòng “Cơm: …”) khớp **duy nhất 1 món** trong 90 → gán đúng bữa đó. Khớp 0 món hoặc từ 2 món trở lên → không gán. Vì vậy “canh chua” (khớp Canh chua cá lóc và Canh chua cá dìa), “Bánh xèo” (khớp 2 món), “cháo nhẹ”, “canh rau”, “gà kho gừng”, “Bánh mì thịt” (không có trong 90) không được gán.
+  - (b) Món chè/bánh ngọt/trái cây ăn chơi rõ ràng theo tên → `an_nhe` (chè đậu xanh, chè đậu ván, chè ba màu, bánh trôi tàu, bánh da lợn, dừa sáp).
+  - Đã gán: **27/90 món**. Còn lại `meal = NULL`.
+- **Thời gian:** chỉ điền khi có công thức đầy đủ. 6 món trong 90: Phở bò `tren_60` (~3 giờ hầm, bản rút gọn 60 phút), Bún chả `30_60` (~60 phút), Bún bò Huế `tren_60` (~90 phút), Mì Quảng `30_60` (~60 phút), Hủ tiếu Nam Vang `tren_60` (~90 phút), Cơm tấm `tren_60` (~75 phút). 84 món còn lại `time_band = NULL`. Hiện **không có món nào `duoi_30`**.
 - **Dịp cuối tuần:** chỉ Lẩu mắm có `occasion = 'cuoi_tuan_dai_khach'` — thực đơn 7 ngày mẫu ghi “Lẩu mắm (Nam) — bữa sum họp cuối tuần”. Các món khác không gán.
 - **Chế độ ăn:** xem mục 4.
 
 ### 3.3. Sort — chỉ sort được khi món có số liệu
 
-- **Nhiều protein nhất / Ít calo nhất / Ít béo nhất:** sort trên bảng `nutrition_estimates` với `basis = 'per_serving'`, dùng `NULLS LAST` — món chưa có số liệu xếp cuối và UI phải ghi rõ “chưa có số liệu dinh dưỡng”, không xếp lẫn với món có số liệu thấp.
+- **Nhiều protein nhất / Ít calo nhất / Ít béo nhất:** sort trên bảng `nutrition_estimates` với `basis = 'per_serving'` và **chỉ nguồn Bảng TPTP VN** (`source_code in ('calocalo_vn_fct','fao_vn_fct_2017')`), dùng `dishes LEFT JOIN` + `NULLS LAST` — món chưa có số liệu xếp cuối và UI phải ghi rõ “chưa có số liệu dinh dưỡng”, không xếp lẫn với món có số liệu thấp. Hiện chưa có dòng theo khẩu phần nào từ nguồn này, nên cả 90 món đều “chưa có số liệu”.
 - Ví dụ query ở mục 7.
 
 ## 4. Chế độ ăn — 6 chế độ, quy tắc rõ ràng
@@ -131,18 +146,20 @@ Enum trong DB (`schema.sql`, cột `dishes.cooking_method`, `dishes.meal`, `dish
 | Mã | Tên | Quy tắc (ghi trong bảng `diet_modes.rule_vi`) |
 |---|---|---|
 | `binh_thuong` | Bình thường | Không loại trừ món nào. |
-| `an_chay` | Ăn chay | Không thịt, không cá/hải sản. Được phép trứng/sữa trừ khi ghi chú khác. Cần xác nhận khi biên tập công thức vì nước mắm/mỡ hành có thể dùng trong món chay. |
-| `an_kieng_giam_can` | Ăn kiêng giảm cân | kcal/phần ≤ 450 (chỉ tính khi có số liệu theo khẩu phần). |
-| `it_dau_mo` | Ít dầu mỡ | Fat/phần ≤ 10 g **và** cách nấu không phải `xao`/`chien_ran`. |
-| `giau_protein` | Giàu protein | Protein/phần ≥ 25 g **và** protein/100 kcal ≥ 7 g (chỉ tính khi có số liệu theo khẩu phần). |
-| `it_tinh_bot` | Ít tinh bột | Carb/phần ≤ 20 g (chỉ tính khi có số liệu theo khẩu phần). |
+| `an_chay` | Ăn chay | Không thịt, không cá/hải sản. Được phép trứng/sữa trừ khi ghi chú khác. **Không phụ thuộc số liệu dinh dưỡng.** `false` khi tên món (theo từ trọn) có: bò, gà, heo, thịt, cá, tôm, cua, ốc, hến, mực, vịt, lòng, sườn, chả, nem, mắm, tré, mọc — hoặc công thức đầy đủ có thịt/cá/hải sản. Chỉ `true` khi có công thức xác nhận; còn lại `NULL`. |
+| `an_kieng_giam_can` | Ăn kiêng giảm cân | kcal/phần ≤ 450 (chỉ tính khi có số liệu theo khẩu phần từ Bảng TPTP VN). |
+| `it_dau_mo` | Ít dầu mỡ | Fat/phần > 10 g → `false`; fat ≤ 10 g và cách nấu là `xao`/`chien_ran` → `false`; fat ≤ 10 g và **chưa có cách nấu → `NULL`**; còn lại → `true`. Chỉ tính khi có số liệu từ Bảng TPTP VN. |
+| `giau_protein` | Giàu protein | Protein/phần ≥ 25 g **và** protein/100 kcal ≥ 7 g (chỉ tính khi có số liệu theo khẩu phần từ Bảng TPTP VN). |
+| `it_tinh_bot` | Ít tinh bột | Carb/phần ≤ 20 g (chỉ tính khi có số liệu theo khẩu phần từ Bảng TPTP VN). |
 
-**Cách gán tag:** chỉ tự động gán khi quy tắc kiểm tra được từ số liệu đã biết; còn lại để `is_applicable = NULL`, `status = 'chua_co_du_lieu'`, không đoán.
+Các ngưỡng 450 kcal, 10 g béo, 25 g và 7 g/100 kcal protein, 20 g carb là **quyết định sản phẩm**, không lấy từ nguồn nào ở mục 2.4.
 
-- 12 món có số liệu FitArchive theo khẩu phần và gán được vào một món trong kho 90 (Phở bò, Bún chả, Bún bò Huế, Mì Quảng, Hủ tiếu Nam Vang, Cơm tấm, Gỏi cuốn, Cá kho tộ, Rau muống xào tỏi, Cháo lòng, Chè ba màu, Xôi xéo) → 72 tag đã xác định.
-- 78 món còn lại trong 90 → 468 tag `chua_co_du_lieu`.
-- Riêng `an_chay`: trong 12 món trên, chỉ Rau muống xào tỏi, Chè ba màu, Xôi xéo được gán `true` (món thực vật rõ ràng theo tên món); các món còn lại là `false` vì có thịt/cá/tôm. Khi biên tập công thức phải xác nhận lại (ví dụ nước mắm trong món chay).
-- Riêng `it_dau_mo`: Rau muống xào tỏi có fat 10 g nhưng là món xào nên gán `false` — xào vẫn có dầu, không xếp vào ít dầu mỡ tuyệt đối.
+**Cách gán tag:** chỉ gán khi quy tắc kiểm tra được từ dữ liệu đã biết; còn lại để `is_applicable = NULL`, `status = 'chua_co_du_lieu'`, không đoán.
+
+- `binh_thuong`: cả 90 món `true` (không loại trừ món nào) → 90 tag đã xác định.
+- `an_chay`: 59 món `false` (58 theo tên món + Hủ tiếu Nam Vang theo công thức có thịt/tôm/gan). 31 món `NULL` — chưa có công thức để xác nhận, gồm cả Rau muống xào tỏi, Chè ba màu, Xôi xéo (trước đây gán `true` theo tên, nay bỏ vì chưa có công thức xác nhận; ví dụ xôi xéo có thể dùng mỡ hành). Không món nào `true`.
+- 4 tag dinh dưỡng: theo QĐ1 = B, cả 90 món `NULL`. 12 món trước đây có tag theo FitArchive (Phở bò, Bún chả, Bún bò Huế, Mì Quảng, Hủ tiếu Nam Vang, Cơm tấm, Gỏi cuốn, Cá kho tộ, Rau muống xào tỏi, Cháo lòng, Chè ba màu, Xôi xéo) giờ ghi `basis = 'Chờ cân khẩu phần, tính theo Bảng TPTP VN (QĐ1=B)'`.
+- Tổng: **149 tag đã xác định, 391 tag `chua_co_du_lieu`**.
 
 ## 5. Deploy lên Supabase
 
@@ -154,7 +171,7 @@ Enum trong DB (`schema.sql`, cột `dishes.cooking_method`, `dishes.meal`, `dish
 ### Bước 2 — Chạy schema rồi seed
 
 1. Mở file `schema.sql`, copy toàn bộ, dán vào SQL Editor → **Run**. Tạo xong 8 bảng + 2 hàm protein + RLS.
-2. Mở file `seed.sql`, copy toàn bộ, dán vào SQL Editor → **Run**. Nạp xong 90 món, 7 công thức, 56 dòng nguyên liệu, 22 dòng dinh dưỡng, 6 chế độ ăn, 540 tag, 21 bữa thực đơn tuần, 7 nguồn.
+2. Mở file `seed.sql`, copy toàn bộ, dán vào SQL Editor → **Run**. Nạp xong 90 món, 6 công thức, 50 dòng nguyên liệu, 21 dòng dinh dưỡng, 6 chế độ ăn, 540 tag, 21 bữa thực đơn tuần, 7 nguồn.
 3. Nếu chạy lại seed, `ON CONFLICT DO NOTHING` sẽ bỏ qua các dòng đã có, không tạo trùng.
 
 ### Bước 3 — Hoặc import CSV (thay cho seed, nếu thích)
@@ -170,7 +187,7 @@ Enum trong DB (`schema.sql`, cột `dishes.cooking_method`, `dishes.meal`, `dish
 select region, count(*) from dishes group by region order by region;
 select count(*) as tong_mon from dishes;
 
--- 2. Công thức đầy đủ trong 90 phải là 6; tổng công thức là 7 (6 trong 90 + Bánh mì ngoài 90)
+-- 2. Công thức đầy đủ trong 90 phải là 6; tổng công thức cũng là 6 (không còn công thức ngoài 90)
 select count(*) as cong_thuc_trong_90 from recipes where in_90 = true;
 select count(*) as tong_cong_thuc from recipes;
 select count(*) as mon_dang_bien_tap from dishes where status = 'dang_bien_tap';
@@ -180,7 +197,7 @@ select count(*) as mon_dang_bien_tap from dishes where status = 'dang_bien_tap';
 select distinct region from dishes;
 -- chỉ được ra Bac / Trung / Nam
 
--- 4. Dinh dưỡng: phải ra 22 dòng, mỗi dòng đều có nguồn + phương pháp + độ tin cậy
+-- 4. Dinh dưỡng: phải ra 21 dòng (per_100g 8, per_serving 13), mỗi dòng đều có nguồn + phương pháp + độ tin cậy
 select basis, count(*) from nutrition_estimates group by basis;
 select count(*) from nutrition_estimates
  where source_code is null or method is null or confidence is null;
@@ -213,8 +230,10 @@ Tất cả query dưới đây chạy được trên schema đã tạo. Dùng Su
 ### 7.1. Món của ngày (theo ngày thật, không hard-code)
 
 ```sql
--- Món của ngày: lấy 3 món theo ngày trong năm, không lặp trong 7 ngày gần nhất
--- (logic chọn món theo hồ sơ vị nằm ở app; DB chỉ cung cấp kho món + tag)
+-- Món của ngày: lấy 3 món theo ngày (xáo theo md5 của slug + ngày).
+-- Query này KHÔNG chống lặp: chạy thử 7 ngày 2026-11-23 → 2026-11-29 thì
+-- bun-cha xuất hiện 5/7 ngày, vì chỉ có 6 món co_cong_thuc.
+-- Logic chống lặp / chọn theo hồ sơ vị thuộc lớp domain của app, không nằm ở DB.
 select d.slug, d.name, d.region, d.cooking_method, d.meal
 from dishes d
 where d.status = 'co_cong_thuc'
@@ -230,25 +249,28 @@ select d.slug, d.name, d.region, d.cooking_method, d.meal, n.kcal, n.protein_g
 from dishes d
 join dish_diet_tags t on t.dish_id = d.id and t.diet_mode_code = 'an_kieng_giam_can' and t.is_applicable = true
 left join nutrition_estimates n on n.dish_id = d.id and n.basis = 'per_serving'
+  and n.source_code in ('calocalo_vn_fct', 'fao_vn_fct_2017')
 where d.region = 'Nam'
   and d.cooking_method = 'mon_nuoc'
   and d.meal = 'trua';
--- Lưu ý: món chưa có số liệu sẽ không qua được filter chế độ ăn
--- (tag = NULL), đúng theo quy tắc "không đoán".
+-- Kết quả thật với dữ liệu hiện tại: 0 dòng.
+-- Lý do: 4 tag dinh dưỡng đều NULL (QĐ1=B, chờ số liệu Bảng TPTP VN), và
+-- không có món nước miền Nam nào được gán bữa trưa. Món chưa có số liệu
+-- không qua được filter chế độ ăn — đúng quy tắc "không đoán". UI cần trạng thái rỗng.
 ```
 
 ```sql
 -- Lọc theo thời gian (filter riêng, không phải cách nấu)
 select slug, name, time_band from dishes
 where time_band = 'duoi_30';
--- Chỉ ra các món có công thức đầy đủ và thời gian đã biết.
+-- Kết quả thật: 0 dòng — 6 món có thời gian đều là 30_60 hoặc tren_60.
 -- Món chưa có công thức có time_band = NULL nên không lọt vào.
 ```
 
 ```sql
 -- Lọc theo dịp cuối tuần / đãi khách
 select slug, name from dishes where occasion = 'cuoi_tuan_dai_khach';
--- Chỉ ra Lẩu mắm (theo thực đơn 7 ngày mẫu).
+-- Kết quả thật: 1 dòng — lau-mam | Lẩu mắm (theo thực đơn 7 ngày mẫu).
 ```
 
 ### 7.3. Thực đơn tuần mẫu
@@ -262,29 +284,32 @@ order by day_of_week,
 
 ### 7.4. Sort: nhiều protein nhất / ít calo nhất / ít béo nhất (món chưa có số liệu xếp cuối)
 
+Chỉ dùng nguồn Bảng TPTP VN (QĐ1 = B). Dùng `dishes LEFT JOIN` để món chưa có số liệu **vẫn xuất hiện** và xếp cuối — `JOIN` thường sẽ loại hẳn các món đó.
+
 ```sql
 -- Nhiều protein nhất (theo khẩu phần)
 select d.name, n.protein_g, n.kcal, n.serving_label
 from dishes d
-join nutrition_estimates n on n.dish_id = d.id and n.basis = 'per_serving'
-order by n.protein_g desc nulls last
-limit 10;
+left join nutrition_estimates n on n.dish_id = d.id and n.basis = 'per_serving'
+  and n.source_code in ('calocalo_vn_fct', 'fao_vn_fct_2017')
+order by n.protein_g desc nulls last, d.name;
 
 -- Ít calo nhất
 select d.name, n.kcal, n.protein_g
 from dishes d
-join nutrition_estimates n on n.dish_id = d.id and n.basis = 'per_serving'
-order by n.kcal asc nulls last
-limit 10;
+left join nutrition_estimates n on n.dish_id = d.id and n.basis = 'per_serving'
+  and n.source_code in ('calocalo_vn_fct', 'fao_vn_fct_2017')
+order by n.kcal asc nulls last, d.name;
 
 -- Ít béo nhất
 select d.name, n.fat_g, n.kcal
 from dishes d
-join nutrition_estimates n on n.dish_id = d.id and n.basis = 'per_serving'
-order by n.fat_g asc nulls last
-limit 10;
--- UI phải ghi rõ: món không có dòng nutrition_estimates thì xếp cuối
--- và hiển thị "chưa có số liệu dinh dưỡng".
+left join nutrition_estimates n on n.dish_id = d.id and n.basis = 'per_serving'
+  and n.source_code in ('calocalo_vn_fct', 'fao_vn_fct_2017')
+order by n.fat_g asc nulls last, d.name;
+-- Kết quả thật với dữ liệu hiện tại: 90 dòng, cả 90 món đều chưa có số liệu
+-- theo khẩu phần từ Bảng TPTP VN (protein_g/kcal/fat_g = NULL).
+-- UI phải hiển thị "chưa có số liệu dinh dưỡng" cho các món này.
 ```
 
 ### 7.5. Ví dụ 1 — Người giảm cân
@@ -297,16 +322,14 @@ from dishes d
 join dish_diet_tags t1 on t1.dish_id = d.id and t1.diet_mode_code = 'it_dau_mo' and t1.is_applicable = true
 join dish_diet_tags t2 on t2.dish_id = d.id and t2.diet_mode_code = 'an_kieng_giam_can' and t2.is_applicable = true
 join nutrition_estimates n on n.dish_id = d.id and n.basis = 'per_serving'
+  and n.source_code in ('calocalo_vn_fct', 'fao_vn_fct_2017')
 where n.kcal <= 450
 order by n.kcal asc;
+-- Kết quả thật với dữ liệu hiện tại: 0 dòng — chưa có số liệu theo khẩu phần
+-- từ Bảng TPTP VN, nên chưa món nào được xác định "ít dầu mỡ" hay "ăn kiêng".
 ```
 
-Món có số liệu thật khớp ví dụ này:
-- **Phở bò — 418 kcal / 38 g protein / 4 g béo** (1 tô 785 g, FitArchive ước tính).
-- **Gỏi cuốn — 147 kcal / 9 g protein / 3 g béo** (1 cuốn 98 g).
-- **Chè ba màu — 301 kcal / 7 g protein / 9 g béo** (1 ly 160 g).
-- **Canh chua cá — 148 kcal / 14 g protein / 4 g béo** (1 tô 208 g) — số liệu thật từ FitArchive, nhưng là món chung, **không gán cho một món cụ thể** trong kho (xem mục 2.3), nên chỉ dùng làm ví dụ tham khảo, không dùng query trên để lọc ra món này.
-- **Rau muống xào tỏi — 139 kcal / 5 g protein / 10 g béo** (1 đĩa 220 g) — lưu ý: đây là món **xào** nên vẫn có dầu, **không xếp vào ít dầu mỡ tuyệt đối**; trong DB tag `it_dau_mo` của món này là `false` dù fat = 10 g.
+Số liệu FitArchive (mục 2.3) chỉ để tham khảo, **không dùng để trả lời ví dụ này và không hiển thị**.
 
 ### 7.6. Ví dụ 2 — Người tập gym cần protein
 
@@ -323,36 +346,36 @@ select protein_target_grams(70, 1.6) as protein_muc_tieu_g_ngay;
 select protein_remaining_grams(70, 1.6, 40) as protein_con_thieu_g;
 -- ra 72.0
 
--- Món giàu protein có số liệu thật (theo khẩu phần, FitArchive ước tính)
+-- Món giàu protein có số liệu theo khẩu phần (chỉ Bảng TPTP VN)
 select d.name, n.protein_g, n.kcal, n.fat_g
 from dishes d
 join nutrition_estimates n on n.dish_id = d.id and n.basis = 'per_serving'
+  and n.source_code in ('calocalo_vn_fct', 'fao_vn_fct_2017')
 order by n.protein_g desc
 limit 5;
--- Bún bò Huế 42 g, Mì Quảng gà 41 g, Phở bò 38 g, Cơm tấm sườn 36 g, Hủ tiếu Nam Vang 36 g
+-- Kết quả thật với dữ liệu hiện tại: 0 dòng (chưa có số liệu theo khẩu phần từ Bảng TPTP VN).
 ```
 
 ```sql
--- Lọc món vừa giàu protein vừa ít dầu mỡ
--- (protein >= 25 g, fat thấp, không chiên — theo tag đã tính sẵn)
+-- Lọc món vừa giàu protein vừa ít dầu mỡ (theo tag đã tính sẵn)
 select d.name, n.protein_g, n.fat_g, n.kcal
 from dishes d
 join dish_diet_tags t1 on t1.dish_id = d.id and t1.diet_mode_code = 'giau_protein' and t1.is_applicable = true
 join dish_diet_tags t2 on t2.dish_id = d.id and t2.diet_mode_code = 'it_dau_mo' and t2.is_applicable = true
 join nutrition_estimates n on n.dish_id = d.id and n.basis = 'per_serving'
+  and n.source_code in ('calocalo_vn_fct', 'fao_vn_fct_2017')
 order by n.protein_g desc;
--- Với dữ liệu hiện tại chỉ ra Phở bò (38 g protein, 4 g béo):
--- Bún bò Huế có 42 g protein nhưng fat 17 g nên không qua filter ít dầu mỡ.
--- Đây là kết quả thật từ số liệu hiện có, không phải do thiếu món.
+-- Kết quả thật với dữ liệu hiện tại: 0 dòng — tag giau_protein và it_dau_mo đều NULL
+-- cho tới khi có số liệu theo khẩu phần từ Bảng TPTP VN.
 ```
 
 ## 8. Chưa có trong dữ liệu — việc cần làm tiếp (nấu thử và chuẩn hóa)
 
-1. **84 món trong 90 chưa có công thức.** Trong kịch bản chúng chỉ có tên, là danh sách ứng viên để biên tập. Cần nấu thử từng món ít nhất 2 lần (theo kịch bản trang 15), chuẩn hóa định lượng theo mẫu trang 12 (tên + miền + địa phương, bữa/thời gian/độ khó, nguyên liệu theo khẩu phần, bước nấu có hẹn giờ, mẹo, món kèm, ảnh tự chụp), rồi mới điền vào `recipes` + `ingredients` và đổi `status` từ `dang_bien_tap` sang `co_cong_thuc`.
-2. **84 món chưa có dinh dưỡng.** Chỉ 12 món có số liệu theo khẩu phần và 8 món có số liệu theo 100 g (một phần trùng nhau). Sau khi nấu thử và cân khẩu phần chuẩn, tính lại dinh dưỡng từ nguyên liệu (ưu tiên Bảng Thành phần Thực phẩm Việt Nam) rồi mới điền `nutrition_estimates` và tính lại `dish_diet_tags` — không điền số ước đoán tay.
-3. **Cách nấu / bữa / thời gian còn thiếu.** Hiện mới gán được 37 món có cách nấu, 24 món có bữa, 6 món có thời gian. Sau khi nấu thử, điền đủ 3 cột này theo đúng quy tắc ở mục 3.2.
+1. **84 món chưa có công thức** sẽ được bổ sung công thức THAM KHẢO từ nguồn uy tín trên mạng (ưu tiên nguồn Việt Nam có tác giả, nhà xuất bản hoặc trang nấu ăn uy tín), ghi rõ tên nguồn, URL và ngày truy cập. Chỉ dùng danh sách nguyên liệu; các bước được diễn đạt lại, không chép nguyên văn. Trạng thái 'tham_khao_online' = chưa nấu thử. Sau khi có công thức tham khảo mới tính dinh dưỡng theo Bảng Thành phần Thực phẩm Việt Nam. Nấu thử là bước sau, khi đó đổi sang 'da_nau_thu'. Món chưa tìm được nguồn uy tín vẫn để NULL.
+2. **Dinh dưỡng chuẩn chưa có.** Theo QĐ1 = B, chỉ Bảng Thành phần Thực phẩm Việt Nam được dùng để tính tag và hiển thị. Hiện chỉ có 8 dòng theo 100 g (qua CaloCalo, cần đối chiếu bản gốc FAO 2017) và chưa có dòng theo khẩu phần nào từ nguồn này. Dinh dưỡng theo khẩu phần sẽ tính từ nguyên liệu có khối lượng rõ ràng — không điền số ước đoán tay.
+3. **Cách nấu / bữa / thời gian còn thiếu.** Hiện gán được 44 món có cách nấu, 27 món có bữa, 6 món có thời gian. Cách nấu của Mì Quảng tạm giữ `NULL` (QĐ3, chưa chốt). Khi có công thức, điền tiếp theo đúng quy tắc ở mục 3.2.
 4. **180 món tiếp theo** (kịch bản: thêm 10–15 món/tuần sau ra mắt) chưa có trong gói này.
-5. **3 món ngoài 90 và 2 thẻ miền cũ** (Thịt kho trứng, Gà nướng cơm lam, Lẩu Thái chua cay; thẻ “Tây Nguyên”, “Biển & Đảo”) chưa được quyết giữ hay bỏ — đang chờ Dev quyết, nên **không đưa vào gói này**.
+5. Thịt kho trứng, Gà nướng cơm lam, Lẩu Thái chua cay: đã quyết định BỎ khỏi gói dữ liệu (2026-11-23). Có thể thêm lại sau, khi có công thức nấu thử và số liệu có nguồn. Hai thẻ miền cũ (“Tây Nguyên”, “Biển & Đảo”) chưa được quyết giữ hay bỏ — đang chờ Dev quyết, nên **không đưa vào gói này**.
 
 ## 9. RLS và bảo mật
 
